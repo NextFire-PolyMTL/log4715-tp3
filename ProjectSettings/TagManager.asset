@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - frag
+  - Enemy
+  - Weapon
+  - Hero
+  - trampoline
+  - mud
+  - ice
   layers:
   - Default
   - TransparentFX

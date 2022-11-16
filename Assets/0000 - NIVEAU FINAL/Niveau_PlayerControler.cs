@@ -11,9 +11,13 @@ public class Niveau_PlayerControler : MonoBehaviour
     private static readonly Vector3 CameraPosition = new Vector3(8.333332f, 1.666666f, -0.7666666f);
     private static readonly Vector3 InverseCameraPosition = new Vector3(-8.333332f, 1.666666f, 0.7666666f);
 
+    private weaponDamage _Weapon;
     // Déclaration des variables
     bool _Grounded { get; set; }
     bool _Flipped { get; set; }
+    bool _isOnIce { get; set; }
+    bool _isOnTrampoline { get; set; }
+    bool _isOnMud { get; set; }
     Animator _Anim { get; set; }
     Rigidbody _Rb { get; set; }
     Camera _MainCamera { get; set; }
@@ -27,6 +31,13 @@ public class Niveau_PlayerControler : MonoBehaviour
 
     [SerializeField]
     LayerMask WhatIsGround;
+
+    // 4 - DIFFERENT SOL -----------------------------------------------
+    [SerializeField]
+    float trampoForce = 10f;
+
+    [SerializeField]
+    float mudEffect= 0.5f;
 
     // 1 - DASH -----------------------------------------------
     [Header("Dash")]
@@ -62,9 +73,17 @@ public class Niveau_PlayerControler : MonoBehaviour
     public static Vector3 player_pos; // Position initiale du joueur si on relance la scène
     public static bool player_flip = false;
     public static bool start_opening = false;
+    
 
     [SerializeField] 
     GameObject visualCue;
+    
+
+
+    public GameObject Weapon;
+    public float life=1000;
+
+    
 
 
 
@@ -75,6 +94,8 @@ public class Niveau_PlayerControler : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody>();
         _MainCamera = Camera.main;
+        
+        _Weapon=Weapon.GetComponent<weaponDamage>();
     }
 
     // Utile pour régler des valeurs aux objets
@@ -128,6 +149,13 @@ public class Niveau_PlayerControler : MonoBehaviour
             {   
                 StartCoroutine(Dash(horizontal));
             }
+            if (Input.GetButtonDown("Attack"))
+            {
+                //_Anim.SetBool("Attack",true);
+                _Weapon.damage_mode=true;
+                _Anim.CrossFade("Attack",0.1f);
+            }
+            
         
         }
     }
@@ -135,7 +163,25 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
-        _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y, horizontal);
+        if (_isOnTrampoline)
+        {
+           //_Rb.AddForce(new Vector3(0, trampoForce*Mathf.Abs(_Rb.velocity.y),0));
+           _Rb.AddForce(new Vector3(0, trampoForce*(Mathf.Abs(_Rb.velocity.y)+0.25f*Mathf.Abs(_Rb.velocity.z)),0));
+           //_Rb.AddForce(new Vector3(0, trampoForce*(Mathf.Abs(_Rb.velocity.y)),trampoForce*Mathf.Abs(_Rb.velocity.z)));
+           _isOnTrampoline=false;
+           Debug.Log(trampoForce*Mathf.Abs(_Rb.velocity.z));
+        }
+        
+        if (_isOnIce)
+        {
+           _Rb.AddForce(new Vector3(0, 0,horizontal*0.2f)); 
+        } 
+        else if(_isOnMud){
+           _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y,horizontal*mudEffect);
+        }
+        else{
+            _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y,horizontal);
+        }
         _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
     }
 
@@ -208,5 +254,27 @@ public class Niveau_PlayerControler : MonoBehaviour
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
         }
+        if (coll.gameObject.tag == "trampoline") {
+            _isOnTrampoline=true;
+        }else{
+            _isOnTrampoline=false;
+        }
+        
+        if (coll.gameObject.tag == "mud") {
+            _isOnMud=true;
+        }else{
+            _isOnMud=false;
+        }
+        if (coll.gameObject.tag == "ice") {
+            _isOnIce=true;
+            Debug.Log("ice floor");
+            GetComponent<Collider>().material.dynamicFriction = 0;
+            Debug.Log(GetComponent<Collider>().material);
+        }else {
+            _isOnIce=false;
+        }
+    }
+    void Attack_End(){
+        _Weapon.damage_mode=false;
     }
 }
