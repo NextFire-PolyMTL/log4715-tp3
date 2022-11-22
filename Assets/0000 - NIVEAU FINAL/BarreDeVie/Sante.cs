@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using Lifebar;
-public class Santé : MonoBehaviour
+public class Sante : MonoBehaviour
 {
     //Variable pour le setup de la lifebar;
-    public int PV_max=10;
+    public int PV_max = 10;
     public int PV_actuels;
-    [SerializeField] BarDeVie bar_de_vie; 
+    [SerializeField] BarDeVie bar_de_vie;
     [SerializeField] GameObject gameover;
     [SerializeField] int Dégats_Projectiles;
     [SerializeField] int Dégats_Lave;
@@ -15,7 +15,7 @@ public class Santé : MonoBehaviour
     // Variables pour la lave
     //[SerializeField] LayerMask ThisFloorIsLava;
     bool _Lavaed { get; set; }
-    private float intervalle; 
+    private float intervalle;
 
     // Variables pour le piège:
     private GameObject eboul;
@@ -26,57 +26,65 @@ public class Santé : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PV_actuels=PV_max;
-        bar_de_vie=GameObject.Find("Character/CyberSoldier/Canvas/LifeBar").GetComponent<BarDeVie>();
-        gameover=GameObject.Find("Character/CyberSoldier/Canvas/GameOver");
+        PV_actuels = PV_max;
+        bar_de_vie = GameObject.Find("Character/CyberSoldier/Canvas/LifeBar").GetComponent<BarDeVie>();
+        gameover = GameObject.Find("Character/CyberSoldier/Canvas/GameOver");
         //eboul=GetComponent<GameObject>();
-        _Lavaed=false;
-        intervalle=0;
+        _Lavaed = false;
+        intervalle = 0;
 
-        eboul=GameObject.Find("Level/eboul");
-        press=GameObject.Find("Level/Pressure");
-        active=false;
-        time=0;
-        Dégats_Projectiles=2;
-        Dégats_Lave=2;
+        eboul = GameObject.Find("Level/eboul");
+        press = GameObject.Find("Level/Pressure");
+        active = false;
+        time = 0;
+        Dégats_Projectiles = 2;
+        Dégats_Lave = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (_Lavaed){
-            intervalle+=Time.deltaTime;
-            if (intervalle>0.5){
+
+        if (_Lavaed)
+        {
+            intervalle += Time.deltaTime;
+            if (intervalle > 0.5)
+            {
                 Degats(Dégats_Lave);
-                intervalle=0;
+                intervalle = 0;
             }
-            
+
         }
-        if (PV_actuels<=0){
+        if (PV_actuels <= 0)
+        {
             gameover.SetActive(true);
         }
-        if (PV_actuels>0){
+        if (PV_actuels > 0)
+        {
             gameover.SetActive(false);
         }
 
 
-        if (active==true){
+        if (active == true)
+        {
             //trap1.SetActive(true);
             //trap2.SetActive(true);
             //trap3.SetActive(true);
             //trap4.SetActive(true);
             //trap5.SetActive(true);
             eboul.SetActive(true);
-            time+=Time.deltaTime;
+            time += Time.deltaTime;
         }
-        else{
+        else
+        {
             eboul.SetActive(false);
         }
-        if (time==0.8){
+        if (time == 0.8)
+        {
             Degats(5);
         }
-        if (time>1){
+        if (time > 1)
+        {
             eboul.SetActive(false);
         }
 
@@ -84,29 +92,32 @@ public class Santé : MonoBehaviour
 
     void Degats(int degats)
     {
-        if (PV_actuels-degats>=0)
+        if (PV_actuels - degats >= 0)
         {
-            PV_actuels=PV_actuels-degats;
+            PV_actuels = PV_actuels - degats;
         }
-        else 
+        else
         {
-            PV_actuels=0;
+            PV_actuels = 0;
         }
-        
+
         bar_de_vie.setLife(PV_actuels);
     }
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.layer == 9){
-            _Lavaed=true;
+        if (coll.gameObject.layer == 9)
+        {
+            _Lavaed = true;
         }  //créer une animation?
-        if (coll.gameObject.layer == 10){
-            active=true;
+        if (coll.gameObject.layer == 10)
+        {
+            active = true;
         }
-        if (coll.gameObject.tag == "projectile"){
+        if (coll.gameObject.tag == "projectile")
+        {
             Degats(Dégats_Projectiles);
-            
+
         }
     }
 

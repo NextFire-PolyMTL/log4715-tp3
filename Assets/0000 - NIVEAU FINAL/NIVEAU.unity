@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5195,7 +5195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfea5de8b92a949429fac4c9d1c6efd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "sant\xE9": {fileID: 488973521}
+  sante: {fileID: 488973521}
 --- !u!1 &489619042
 GameObject:
   m_ObjectHideFlags: 0
@@ -10893,7 +10893,7 @@ MonoBehaviour:
   visualCue: {fileID: 1034342397}
   Weapon: {fileID: 1614654540}
   life: 1000
-  "sant\xE9": {fileID: 967482694}
+  sante: {fileID: 0}
   xp: 0
   txt: {fileID: 0}
   image_money: {fileID: 0}
@@ -10906,15 +10906,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 967482685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff6da99fd9e085478b785b8d24ae166, type: 3}
+  m_Script: {fileID: 11500000, guid: e1e78da67ac5b49ffbb8c18654b12bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PV_max: 10
-  PV_actuels: 0
-  bar_de_vie: {fileID: 488973522}
-  gameover: {fileID: 480883782}
-  "D\xE9gats_Projectiles": 0
-  "D\xE9gats_Lave": 0
+  PV_actuels: 10
+  bar_de_vie: {fileID: 0}
+  gameover: {fileID: 0}
+  "D\xE9gats_Projectiles": 1
+  "D\xE9gats_Lave": 1
 --- !u!114 &967482695
 MonoBehaviour:
   m_ObjectHideFlags: 0

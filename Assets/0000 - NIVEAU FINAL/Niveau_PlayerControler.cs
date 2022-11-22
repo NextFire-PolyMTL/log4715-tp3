@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Niveau_PlayerControler : MonoBehaviour
-{   
+{
     // 0 - CADRICIEL INITIAL
     [Header("Objets génériques")]
     // Déclaration des constantes
@@ -22,7 +22,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     Animator _Anim { get; set; }
     Rigidbody _Rb { get; set; }
     Camera _MainCamera { get; set; }
-    
+
     // Valeurs exposées
     [SerializeField]
     float MoveSpeed = 5.0f;
@@ -38,7 +38,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     float trampoForce = 10f;
 
     [SerializeField]
-    float mudEffect= 0.5f;
+    float mudEffect = 0.5f;
 
     // 1 - DASH -----------------------------------------------
     [Header("Dash")]
@@ -74,22 +74,22 @@ public class Niveau_PlayerControler : MonoBehaviour
     public static Vector3 player_pos; // Position initiale du joueur si on relance la scène
     public static bool player_flip = false;
     public static bool start_opening = false;
-    
 
-    [SerializeField] 
+
+    [SerializeField]
     GameObject visualCue;
-    
+
 
 
     public GameObject Weapon;
-    public float life=1000;
+    public float life = 1000;
 
     // Barre de Vie
-    [SerializeField] Santé santé;
+    [SerializeField] Sante sante;
 
     // Arbre de compétences
     private GameObject NombreS;
-    public int xp=0;
+    public int xp = 0;
     public Text txt;
     [SerializeField]
     GameObject image_money;
@@ -106,13 +106,13 @@ public class Niveau_PlayerControler : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody>();
         _MainCamera = Camera.main;
-        santé=GetComponent<Santé>();
-        
-        _Weapon=Weapon.GetComponent<weaponDamage>();
+        sante = GetComponent<Sante>();
 
-        NombreS=GameObject.Find("Arbre/Canvas/nombre");
-        txt=NombreS.GetComponent<Text>();
-        bouton=GameObject.Find("Arbre/Canvas/Boutons/Manager").GetComponent<Bouton>();
+        _Weapon = Weapon.GetComponent<weaponDamage>();
+
+        NombreS = GameObject.Find("Arbre/Canvas/nombre");
+        txt = NombreS.GetComponent<Text>();
+        bouton = GameObject.Find("Arbre/Canvas/Boutons/Manager").GetComponent<Bouton>();
     }
 
     // Utile pour régler des valeurs aux objets
@@ -132,18 +132,20 @@ public class Niveau_PlayerControler : MonoBehaviour
                 _MainCamera.transform.localPosition = InverseCameraPosition;
             }
         }
-        DoubleJump=false;
+        DoubleJump = false;
     }
 
     // Vérifie les entrées de commandes du joueur
     void Update()
-    {   
+    {
         TextChange();
-        if (santé.PV_actuels<=0){
-            freeze=true;
+        if (sante.PV_actuels <= 0)
+        {
+            freeze = true;
         }
-        else{
-            freeze=false;
+        else
+        {
+            freeze = false;
         }
         if (isDashing)
         {
@@ -152,7 +154,7 @@ public class Niveau_PlayerControler : MonoBehaviour
 
         player_pos = _Rb.position;
         player_pos.y = player_pos.y + 0.7f; // On met le joueur un peu plus haut au spawn
-        if (_Rb.position.z > 4 && _Rb.position.z < 6 )
+        if (_Rb.position.z > 4 && _Rb.position.z < 6)
         {
             visualCue.SetActive(true);
             DialogueScript.begin_dialogue = true;
@@ -161,27 +163,27 @@ public class Niveau_PlayerControler : MonoBehaviour
         {
             visualCue.SetActive(false);
             DialogueScript.begin_dialogue = false;
-            
+
         }
         var horizontal = Input.GetAxis("Horizontal") * MoveSpeed;
-        
+
         if (!freeze)
         { // METTEZ VOS FONCTIONS DANS LE IF : le booléen freeze = true retire le contrôle du personnage
             HorizontalMove(horizontal);
             FlipCharacter(horizontal);
             CheckJump();
             if (Input.GetKeyDown(KeyCode.E) && canDash)
-            {   
+            {
                 StartCoroutine(Dash(horizontal));
             }
             if (Input.GetButtonDown("Attack"))
             {
                 //_Anim.SetBool("Attack",true);
-                _Weapon.damage_mode=true;
-                _Anim.CrossFade("Attack",0.1f);
+                _Weapon.damage_mode = true;
+                _Anim.CrossFade("Attack", 0.1f);
             }
-            
-        
+
+
         }
     }
 
@@ -190,28 +192,30 @@ public class Niveau_PlayerControler : MonoBehaviour
     {
         if (_isOnTrampoline)
         {
-           //_Rb.AddForce(new Vector3(0, trampoForce*Mathf.Abs(_Rb.velocity.y),0));
-           _Rb.AddForce(new Vector3(0, trampoForce*(Mathf.Abs(_Rb.velocity.y)+0.25f*Mathf.Abs(_Rb.velocity.z)),0));
-           //_Rb.AddForce(new Vector3(0, trampoForce*(Mathf.Abs(_Rb.velocity.y)),trampoForce*Mathf.Abs(_Rb.velocity.z)));
-           _isOnTrampoline=false;
-           Debug.Log(trampoForce*Mathf.Abs(_Rb.velocity.z));
+            //_Rb.AddForce(new Vector3(0, trampoForce*Mathf.Abs(_Rb.velocity.y),0));
+            _Rb.AddForce(new Vector3(0, trampoForce * (Mathf.Abs(_Rb.velocity.y) + 0.25f * Mathf.Abs(_Rb.velocity.z)), 0));
+            //_Rb.AddForce(new Vector3(0, trampoForce*(Mathf.Abs(_Rb.velocity.y)),trampoForce*Mathf.Abs(_Rb.velocity.z)));
+            _isOnTrampoline = false;
+            Debug.Log(trampoForce * Mathf.Abs(_Rb.velocity.z));
         }
-        
+
         if (_isOnIce)
         {
-           _Rb.AddForce(new Vector3(0, 0,horizontal*0.2f)); 
-        } 
-        else if(_isOnMud){
-           _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y,horizontal*mudEffect);
+            _Rb.AddForce(new Vector3(0, 0, horizontal * 0.2f));
         }
-        else{
-            _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y,horizontal);
+        else if (_isOnMud)
+        {
+            _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y, horizontal * mudEffect);
+        }
+        else
+        {
+            _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y, horizontal);
         }
         _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
     }
 
     IEnumerator Dash(float horizontal)
-    {   
+    {
         canDash = false;
         isDashing = true;
         _Rb.useGravity = false;
@@ -223,8 +227,8 @@ public class Niveau_PlayerControler : MonoBehaviour
         _Rb.useGravity = true;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
-        canDash = true; 
-        
+        canDash = true;
+
     }
 
     // Gère le saut du personnage, ainsi que son animation de saut
@@ -243,23 +247,24 @@ public class Niveau_PlayerControler : MonoBehaviour
         //    }
         //}
         if (Input.GetButtonDown("Jump"))
-            {
+        {
             if (_Grounded)
-            {   
+            {
                 _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
                 _Grounded = false;
                 _Anim.SetBool("Grounded", false);
                 _Anim.SetBool("Jump", true);
-                DoubleJump=true;
+                DoubleJump = true;
             }
-            else if (DoubleJump && bouton.active_list[0]==1){   
-                _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);           
+            else if (DoubleJump && bouton.active_list[0] == 1)
+            {
+                _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
-                DoubleJump=false;
-            
-            }  
-            } 
+                DoubleJump = false;
+
+            }
+        }
     }
 
     // Gère l'orientation du joueur et les ajustements de la camera
@@ -275,7 +280,7 @@ public class Niveau_PlayerControler : MonoBehaviour
             _MainCamera.transform.localPosition = InverseCameraPosition;
         }
         else if (horizontal > 0 && _Flipped)
-        {   
+        {
             last_orient = 1;
             player_flip = false;
             _Flipped = false;
@@ -287,7 +292,7 @@ public class Niveau_PlayerControler : MonoBehaviour
 
     // Collision avec le sol
     void OnCollisionEnter(Collision coll)
-    {        
+    {
         // On s'assure de bien être en contact avec le sol
         if ((WhatIsGround & (1 << coll.gameObject.layer)) == 0)
             return;
@@ -298,53 +303,70 @@ public class Niveau_PlayerControler : MonoBehaviour
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
         }
-        if (coll.gameObject.tag == "trampoline") {
-            _isOnTrampoline=true;
-        }else{
-            _isOnTrampoline=false;
+        if (coll.gameObject.tag == "trampoline")
+        {
+            _isOnTrampoline = true;
         }
-        
-        if (coll.gameObject.tag == "mud") {
-            _isOnMud=true;
-        }else{
-            _isOnMud=false;
+        else
+        {
+            _isOnTrampoline = false;
         }
-        if (coll.gameObject.tag == "ice") {
-            _isOnIce=true;
+
+        if (coll.gameObject.tag == "mud")
+        {
+            _isOnMud = true;
+        }
+        else
+        {
+            _isOnMud = false;
+        }
+        if (coll.gameObject.tag == "ice")
+        {
+            _isOnIce = true;
             Debug.Log("ice floor");
             GetComponent<Collider>().material.dynamicFriction = 0;
             Debug.Log(GetComponent<Collider>().material);
-        }else {
-            _isOnIce=false;
         }
-        
+        else
+        {
+            _isOnIce = false;
+        }
+
     }
-    private void OnTriggerEnter(Collider coll){
-        if (coll.gameObject.tag=="frag"){
+    private void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.tag == "frag")
+        {
             //NombreS.GetComponent<nombre_xp>().xp+=100;
-            xp+=100;
-            
+            xp += 100;
+
             coll.gameObject.SetActive(false);
         }
     }
-    private void TextChange(){
-        txt.text=xp.ToString();
+    private void TextChange()
+    {
+        txt.text = xp.ToString();
     }
-    void Attack_End(){
-        _Weapon.damage_mode=false;
+    void Attack_End()
+    {
+        _Weapon.damage_mode = false;
     }
-    private void ChangeValue(int nb){
-        xp=nb;
-        if (xp<0){
-            xp=0;
+    private void ChangeValue(int nb)
+    {
+        xp = nb;
+        if (xp < 0)
+        {
+            xp = 0;
         }
     }
-    public bool EnleverXP(int nb){
-        int valeur=xp-nb;
-        bool marche=true;
-        if (valeur<0){
-            valeur=xp;  // s'il n'y a pas assez d'xp pour la compétence, elle ne s'active pas
-            marche=false;
+    public bool EnleverXP(int nb)
+    {
+        int valeur = xp - nb;
+        bool marche = true;
+        if (valeur < 0)
+        {
+            valeur = xp;  // s'il n'y a pas assez d'xp pour la compétence, elle ne s'active pas
+            marche = false;
         }
         ChangeValue(valeur);
         return marche;
