@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class DialogueScript : MonoBehaviour
 {
     [SerializeField]
+    GameObject player;
+    Niveau_PlayerControler _playerControler;
+
+    [SerializeField]
     GameObject image_dialogue_marchand;
 
     [SerializeField]
@@ -34,30 +38,36 @@ public class DialogueScript : MonoBehaviour
     public static bool begin_dialogue = false;
     public static bool start_opening = false;
 
+    void Awake()
+    {
+        _playerControler = player.GetComponent<Niveau_PlayerControler>();
+    }
+
     // Start is called before the first frame update
     void Start()
-    {   
-        if (start_opening) 
-        {   
+    {
+        if (start_opening)
+        {
             start_opening = false;
-            LeanTween.scale (fader, new Vector3 (10, 10, 10), 0);
-            fader.gameObject.SetActive (true);
-            LeanTween.scale (fader, Vector3.zero, 1.5f).setEase (LeanTweenType.easeInOutQuad).setOnComplete (() => {
-            fader.gameObject.SetActive (false);
+            LeanTween.scale(fader, new Vector3(10, 10, 10), 0);
+            fader.gameObject.SetActive(true);
+            LeanTween.scale(fader, Vector3.zero, 1.5f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+            {
+                fader.gameObject.SetActive(false);
             });
         }
         else
         {
-            fader.gameObject.SetActive (false);
+            fader.gameObject.SetActive(false);
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (affiche_d_m)
-        {   
+        {
             image_dialogue_marchand.SetActive(true);
             text_marchand.SetActive(true);
             text_marchand2.SetActive(true);
@@ -65,7 +75,7 @@ public class DialogueScript : MonoBehaviour
             text_heros.SetActive(false);
         }
         else if (affiche_d_h)
-        {   
+        {
             image_dialogue_heros.SetActive(true);
             text_heros.SetActive(true);
             image_dialogue_marchand.SetActive(false);
@@ -85,48 +95,50 @@ public class DialogueScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (begin_dialogue && Input.GetKeyDown (KeyCode.I)) // Phase 1 dialogue : le marchand parle
-        {   
+        if (begin_dialogue && Input.GetKeyDown(KeyCode.I)) // Phase 1 dialogue : le marchand parle
+        {
             source.PlayOneShot(clip_dialogue);
-            Niveau_PlayerControler.freeze = true; // On gèle les mouvements du joueur
+            _playerControler.Frozen = true; // On gèle les mouvements du joueur
             affiche_d_m = true;
             affiche_d_h = false;
         }
 
-        if (affiche_d_m && Input.GetKeyDown (KeyCode.Space)) // Phase 2 dialogue : le joueur répond
-        {   
+        if (affiche_d_m && Input.GetKeyDown(KeyCode.Space)) // Phase 2 dialogue : le joueur répond
+        {
             source.PlayOneShot(clip_dialogue);
             affiche_d_m = false;
             affiche_d_h = true;
         }
 
-        if (affiche_d_h && Input.GetKeyDown (KeyCode.Escape))
-        {   
+        if (affiche_d_h && Input.GetKeyDown(KeyCode.Escape))
+        {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            Niveau_PlayerControler.freeze = false;
+            _playerControler.Frozen = false;
         }
 
-        if (affiche_d_h && Input.GetKeyDown (KeyCode.Y))
-        {   
+        if (affiche_d_h && Input.GetKeyDown(KeyCode.Y))
+        {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            Niveau_PlayerControler.freeze = false;
+            _playerControler.Frozen = false;
             CloseScene();
         }
     }
 
     void CloseScene()
-    {   
-        LeanTween.scale (fader, Vector3.zero, 0f);
-        fader.gameObject.SetActive (true);
-        LeanTween.scale (fader, new Vector3 (10, 10, 10), 0.7f).setEase (LeanTweenType.easeInOutQuad).setOnComplete (() => {
-            Invoke ("LoadGame", 1f);
+    {
+        LeanTween.scale(fader, Vector3.zero, 0f);
+        fader.gameObject.SetActive(true);
+        LeanTween.scale(fader, new Vector3(10, 10, 10), 0.7f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        {
+            Invoke("LoadGame", 1f);
         });
 
     }
 
-    private void LoadGame () {
+    private void LoadGame()
+    {
         DiceScript.start_opening = true;
         SceneManager.LoadScene("Dice-game");
     }

@@ -17,8 +17,8 @@ public class enemyMove : MonoBehaviour
     Camera _MainCamera { get; set; }
 
     // Valeurs exposées
-    [SerializeField]
-    float MoveSpeed = 5.0f;
+    // [SerializeField]
+    // float MoveSpeed = 5.0f;
 
     [SerializeField]
     float JumpForce = 10f;
@@ -32,12 +32,12 @@ public class enemyMove : MonoBehaviour
     [SerializeField]
     Transform firePoint;
     [SerializeField]
-    float frameBtwFire=3f;
-    public bool fire_on_target=false;
+    float frameBtwFire = 3f;
+    public bool fire_on_target = false;
 
 
     //private float time = 0f;
-    private float deltaTime=0f;
+    private float deltaTime = 0f;
     private float lastTimeFire = 0f;
     private Vector3 targetPosition;
 
@@ -58,7 +58,7 @@ public class enemyMove : MonoBehaviour
     // Vérifie les entrées de commandes du joueur
     void Update()
     {
-        
+
     }
 
     // Gère le mouvement horizontal
@@ -102,24 +102,28 @@ public class enemyMove : MonoBehaviour
         }
     }
 
-    void OnCollisonEnter(Collision coll){
+    void OnCollisonEnter(Collision coll)
+    {
         Debug.Log("tag:");
         Debug.Log(coll.gameObject.tag);
-        if(coll.gameObject.tag=="weapon"){
+        if (coll.gameObject.tag == "weapon")
+        {
             Debug.Log("aïe");
         }
     }
-    void OnTriggerEnter(Collider vision){
+    void OnTriggerEnter(Collider vision)
+    {
         Debug.Log(vision.gameObject.tag);
-        if(vision.gameObject.tag=="Hero"){
+        if (vision.gameObject.tag == "Hero")
+        {
             Debug.Log("alert");
             _Anim.SetBool("Alert", true);
         }
-        
+
     }
-    
+
     // Collision avec le sol
-    
+
     /*
     void OnTriggerEnter(Collider vision){
         Debug.Log(vision.gameObject.name=="MaleFree1");
@@ -127,31 +131,34 @@ public class enemyMove : MonoBehaviour
             Debug.Log("alert");
             _Anim.SetBool("Alert", true);
         }
-        
+
     }
     */
-    
-    void OnTriggerStay(Collider vision){
+
+    void OnTriggerStay(Collider vision)
+    {
         //Debug.Log(vision.gameObject.name=="MaleFree1");
-        if(vision.gameObject.tag=="Hero" && fire_on_target){
-            targetPosition=vision.gameObject.transform.position;
-            deltaTime=(Time.frameCount-lastTimeFire);
-            if(deltaTime>frameBtwFire){
+        if (vision.gameObject.tag == "Hero" && fire_on_target)
+        {
+            targetPosition = vision.gameObject.transform.position;
+            deltaTime = (Time.frameCount - lastTimeFire);
+            if (deltaTime > frameBtwFire)
+            {
                 _Anim.SetBool("Shot", true);
-                _Anim.CrossFade("Shoot_SingleShot_AR 0",0.1f);
+                _Anim.CrossFade("Shoot_SingleShot_AR 0", 0.1f);
                 Debug.Log("a");
                 Debug.Log(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0"));
                 //if(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0")){
                 GameObject fire = GameObject.Instantiate(projectile, firePoint.position, firePoint.rotation) as GameObject;
-                fire.GetComponent<projectileBehavior>().target=targetPosition;
+                fire.GetComponent<projectileBehavior>().target = targetPosition;
                 GameObject.Destroy(fire, 3f);
-                deltaTime=0;
-                lastTimeFire=Time.frameCount;
+                deltaTime = 0;
+                lastTimeFire = Time.frameCount;
                 //}
             }
             //fire.target=position
         }
-        
+
     }
     /*
     void OnTriggerExit(Collider vision){

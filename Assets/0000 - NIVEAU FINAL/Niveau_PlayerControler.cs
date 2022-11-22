@@ -14,7 +14,7 @@ public class Niveau_PlayerControler : MonoBehaviour
 
     private weaponDamage _Weapon;
     // Déclaration des variables
-    bool _Grounded { get; set; }
+    public bool Grounded { get; set; }
     bool _Flipped { get; set; }
     bool _isOnIce { get; set; }
     bool _isOnTrampoline { get; set; }
@@ -70,10 +70,10 @@ public class Niveau_PlayerControler : MonoBehaviour
 
     // 2 - DIALOGUE + JEU DE DE --------------------------------------------------------------
     [Header("Dialogue et jeu de hasard")]
-    public static bool freeze = false; // Freeze le joueur si égal à true
-    public static Vector3 player_pos; // Position initiale du joueur si on relance la scène
-    public static bool player_flip = false;
-    public static bool start_opening = false;
+    public bool Frozen = false; // Freeze le joueur si égal à true
+    public Vector3 PlayerPos; // Position initiale du joueur si on relance la scène
+    public bool PlayerFlip = false;
+    static public bool StartOpening = false;
 
 
     [SerializeField]
@@ -85,6 +85,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     public float life = 1000;
 
     // Barre de Vie
+    public bool GameOver = false;
     [SerializeField] Sante sante;
 
     // Arbre de compétences
@@ -118,13 +119,13 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Utile pour régler des valeurs aux objets
     void Start()
     {
-        _Grounded = false;
+        Grounded = false;
         _Flipped = false;
-        if (start_opening)
+        if (StartOpening)
         {
-            start_opening = false;
-            _Rb.position = player_pos;
-            if (player_flip)
+            StartOpening = false;
+            _Rb.position = PlayerPos;
+            if (PlayerFlip)
             {
                 _Flipped = true;
                 transform.Rotate(FlipRotation);
@@ -141,19 +142,15 @@ public class Niveau_PlayerControler : MonoBehaviour
         TextChange();
         if (sante.PV_actuels <= 0)
         {
-            freeze = true;
-        }
-        else
-        {
-            freeze = false;
+            GameOver = true;
         }
         if (isDashing)
         {
             return;
         }
 
-        player_pos = _Rb.position;
-        player_pos.y = player_pos.y + 0.7f; // On met le joueur un peu plus haut au spawn
+        PlayerPos = _Rb.position;
+        PlayerPos.y = PlayerPos.y + 0.7f; // On met le joueur un peu plus haut au spawn
         if (_Rb.position.z > 4 && _Rb.position.z < 6)
         {
             visualCue.SetActive(true);
@@ -167,7 +164,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         }
         var horizontal = Input.GetAxis("Horizontal") * MoveSpeed;
 
-        if (!freeze)
+        if (!GameOver && !Frozen)
         { // METTEZ VOS FONCTIONS DANS LE IF : le booléen freeze = true retire le contrôle du personnage
             HorizontalMove(horizontal);
             FlipCharacter(horizontal);
@@ -248,11 +245,11 @@ public class Niveau_PlayerControler : MonoBehaviour
         //}
         if (Input.GetButtonDown("Jump"))
         {
-            if (_Grounded)
+            if (Grounded)
             {
                 _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
-                _Grounded = false;
+                Grounded = false;
                 _Anim.SetBool("Grounded", false);
                 _Anim.SetBool("Jump", true);
                 DoubleJump = true;
@@ -273,7 +270,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         if (horizontal < 0 && !_Flipped)
         {
             _Flipped = true;
-            player_flip = true;
+            PlayerFlip = true;
             last_orient = -1;
             transform.Rotate(FlipRotation);
             _MainCamera.transform.Rotate(-FlipRotation);
@@ -282,7 +279,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         else if (horizontal > 0 && _Flipped)
         {
             last_orient = 1;
-            player_flip = false;
+            PlayerFlip = false;
             _Flipped = false;
             transform.Rotate(-FlipRotation);
             _MainCamera.transform.Rotate(FlipRotation);
@@ -300,8 +297,8 @@ public class Niveau_PlayerControler : MonoBehaviour
         // Évite une collision avec le plafond
         if (coll.relativeVelocity.y > 0)
         {
-            _Grounded = true;
-            _Anim.SetBool("Grounded", _Grounded);
+            Grounded = true;
+            _Anim.SetBool("Grounded", Grounded);
         }
         if (coll.gameObject.tag == "trampoline")
         {

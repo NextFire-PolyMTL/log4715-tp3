@@ -2345,7 +2345,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 967482686}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!81 &265801510
 AudioListener:
@@ -6562,6 +6562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b270ca276ac00f7499e2f20d2d68db1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 967482685}
   image_dialogue_marchand: {fileID: 2086929457}
   image_dialogue_heros: {fileID: 94855436}
   text_marchand: {fileID: 147264960}
@@ -7806,7 +7807,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 967482686}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &699392677
 SkinnedMeshRenderer:
@@ -7995,7 +7996,7 @@ RectTransform:
   - {fileID: 480883783}
   - {fileID: 488973519}
   m_Father: {fileID: 967482686}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10632,6 +10633,7 @@ GameObject:
   - component: {fileID: 967482694}
   - component: {fileID: 967482695}
   - component: {fileID: 967482693}
+  - component: {fileID: 967482696}
   m_Layer: 0
   m_Name: CyberSoldier
   m_TagString: Hero
@@ -10651,6 +10653,7 @@ Transform:
   m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1428455603}
   - {fileID: 1956617333}
   - {fileID: 699392676}
   - {fileID: 265801509}
@@ -10890,6 +10893,9 @@ MonoBehaviour:
   source: {fileID: 1524311988}
   clip_dash: {fileID: 8300000, guid: 98851fa3ef760f94ebc2d664d6b7a2ef, type: 3}
   clip_saut: {fileID: 8300000, guid: e2cbea86c57e30144873c1679a637f9f, type: 3}
+  Frozen: 0
+  PlayerPos: {x: 0, y: 0, z: 0}
+  PlayerFlip: 0
   visualCue: {fileID: 1034342397}
   Weapon: {fileID: 1614654540}
   life: 1000
@@ -10929,6 +10935,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canva: {fileID: 0}
   TextMenu: {fileID: 0}
+--- !u!114 &967482696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967482685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130fe88be9aba46c99792e6156aa907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _WhatIsIceTag: ice
+  _IceBlock: {fileID: 1428455599}
+  _DelayUntilFreeze: 1
+  _IceBreakNbActions: 5
 --- !u!1 &977740639
 GameObject:
   m_ObjectHideFlags: 0
@@ -15262,6 +15284,104 @@ Transform:
   m_Children:
   - {fileID: 802236182}
   m_Father: {fileID: 1614654541}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1428455599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428455603}
+  - component: {fileID: 1428455602}
+  - component: {fileID: 1428455601}
+  - component: {fileID: 1428455600}
+  m_Layer: 0
+  m_Name: IceBlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &1428455600
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428455599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!23 &1428455601
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428455599}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4122464222d88460e91b34ddc7f1965c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1428455602
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428455599}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1428455603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428455599}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1.6666667, y: 1, z: 1.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 967482686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439327144
@@ -21045,7 +21165,7 @@ Transform:
   m_Children:
   - {fileID: 309020981}
   m_Father: {fileID: 967482686}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1962220353
 GameObject:
