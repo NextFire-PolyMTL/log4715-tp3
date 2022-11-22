@@ -98,7 +98,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     {
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody>();
-        _MainCamera = Camera.main;
+        _MainCamera = GetComponentInChildren<Camera>();
         _sante = GetComponent<Sante>();
 
         _Weapon = Weapon.GetComponent<weaponDamage>();
