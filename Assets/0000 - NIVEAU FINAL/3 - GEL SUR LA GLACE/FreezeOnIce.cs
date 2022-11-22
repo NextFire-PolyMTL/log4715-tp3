@@ -34,7 +34,7 @@ public class FreezeOnIce : MonoBehaviour
 
         if (input || !_pc.Grounded) _lastMove = Time.time;
 
-        if (_onIce && ((Time.time - _lastMove) > _DelayUntilFreeze)) Freeze(true);
+        if (_onIce && (Input.GetAxis("Horizontal") == 0) && ((Time.time - _lastMove) > _DelayUntilFreeze)) Freeze(true);
         else if (_pc.Frozen && (_nbActions > _IceBreakNbActions)) Freeze(false);
     }
 
