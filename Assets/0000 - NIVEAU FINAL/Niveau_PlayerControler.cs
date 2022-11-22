@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Niveau_PlayerControler : MonoBehaviour
 {   
@@ -83,7 +84,18 @@ public class Niveau_PlayerControler : MonoBehaviour
     public GameObject Weapon;
     public float life=1000;
 
-    
+    // Barre de Vie
+    [SerializeField] Santé santé;
+
+    // Arbre de compétences
+    private GameObject NombreS;
+    public int xp=0;
+    public Text txt;
+    [SerializeField]
+    GameObject image_money;
+
+    private bool DoubleJump;
+    private Bouton bouton;
 
 
 
@@ -94,8 +106,13 @@ public class Niveau_PlayerControler : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody>();
         _MainCamera = Camera.main;
+        santé=GetComponent<Santé>();
         
         _Weapon=Weapon.GetComponent<weaponDamage>();
+
+        NombreS=GameObject.Find("Arbre/Canvas/nombre");
+        txt=NombreS.GetComponent<Text>();
+        bouton=GameObject.Find("Arbre/Canvas/Boutons/Manager").GetComponent<Bouton>();
     }
 
     // Utile pour régler des valeurs aux objets
@@ -115,11 +132,19 @@ public class Niveau_PlayerControler : MonoBehaviour
                 _MainCamera.transform.localPosition = InverseCameraPosition;
             }
         }
+        DoubleJump=false;
     }
 
     // Vérifie les entrées de commandes du joueur
     void Update()
     {   
+        TextChange();
+        if (santé.PV_actuels<=0){
+            freeze=true;
+        }
+        else{
+            freeze=false;
+        }
         if (isDashing)
         {
             return;
@@ -205,17 +230,36 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Gère le saut du personnage, ainsi que son animation de saut
     void CheckJump()
     {
-        if (_Grounded)
-        {
-            if (Input.GetButtonDown("Jump"))
+        //if (_Grounded)
+        //{
+        //    if (Input.GetButtonDown("Jump"))
+        //    {
+        //        source.PlayOneShot(clip_saut);
+        //        _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
+        //        _Grounded = false;
+        //        _Anim.SetBool("Grounded", false);
+        //        _Anim.SetBool("Jump", true);
+        //        DoubleJump=true;
+        //    }
+        //}
+        if (Input.GetButtonDown("Jump"))
             {
-                source.PlayOneShot(clip_saut);
+            if (_Grounded)
+            {   
+                _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
                 _Grounded = false;
                 _Anim.SetBool("Grounded", false);
                 _Anim.SetBool("Jump", true);
+                DoubleJump=true;
             }
-        }
+            else if (DoubleJump && bouton.active_list[0]==1){   
+                _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);           
+                _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
+                DoubleJump=false;
+            
+            }  
+            } 
     }
 
     // Gère l'orientation du joueur et les ajustements de la camera
@@ -273,8 +317,37 @@ public class Niveau_PlayerControler : MonoBehaviour
         }else {
             _isOnIce=false;
         }
+        
+    }
+    private void OnTriggerEnter(Collider coll){
+        if (coll.gameObject.tag=="frag"){
+            //NombreS.GetComponent<nombre_xp>().xp+=100;
+            xp+=100;
+            
+            coll.gameObject.SetActive(false);
+        }
+    }
+    private void TextChange(){
+        txt.text=xp.ToString();
     }
     void Attack_End(){
         _Weapon.damage_mode=false;
+    }
+    private void ChangeValue(int nb){
+        xp=nb;
+        if (xp<0){
+            xp=0;
+        }
+    }
+    public bool EnleverXP(int nb){
+        int valeur=xp-nb;
+        bool marche=true;
+        if (valeur<0){
+            valeur=xp;  // s'il n'y a pas assez d'xp pour la compétence, elle ne s'active pas
+            marche=false;
+        }
+        ChangeValue(valeur);
+        return marche;
+
     }
 }

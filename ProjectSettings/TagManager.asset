@@ -11,6 +11,10 @@ TagManager:
   - trampoline
   - mud
   - ice
+  - Lava
+  - floor
+  - piege
+  - projectile
   layers:
   - Default
   - TransparentFX
@@ -21,9 +25,9 @@ TagManager:
   - Game-npc
   - 
   - Floor
-  - 
-  - 
-  - 
+  - lave
+  - piege
+  - projectile
   - 
   - 
   - 

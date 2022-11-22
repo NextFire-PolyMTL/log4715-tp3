@@ -43,10 +43,10 @@ public class projectileBehavior : MonoBehaviour
     void OnCollisionEnter(Collision coll){
         Debug.Log("Collision");
         
-        if(coll.gameObject.tag=="Hero"){
-            coll.gameObject.GetComponent<PlayerControler>().life=0;
+       // if(coll.gameObject.tag=="Hero"){
+       //     coll.gameObject.GetComponent<PlayerControler>().life=0;
             //Destroy(coll.gameObject);
-        }
+       // }
         Destroy(gameObject);
     }
 }
