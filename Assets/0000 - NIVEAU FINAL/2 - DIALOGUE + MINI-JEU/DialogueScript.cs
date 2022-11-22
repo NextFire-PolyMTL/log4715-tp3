@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DialogueScript : MonoBehaviour
 {
-    [SerializeField]
-    GameObject player;
-    Niveau_PlayerControler _playerControler;
+    [SerializeField] private Niveau_PlayerControler _PlayerControler;
+    [SerializeField] private GameObject _VisualCue;
 
     [SerializeField]
     GameObject image_dialogue_marchand;
@@ -33,15 +32,10 @@ public class DialogueScript : MonoBehaviour
     [SerializeField]
     AudioClip clip_dialogue;
 
-    public static bool affiche_d_m = false;
-    public static bool affiche_d_h = false;
-    public static bool begin_dialogue = false;
+    private bool affiche_d_m = false;
+    private bool affiche_d_h = false;
+    private bool begin_dialogue = false;
     public static bool start_opening = false;
-
-    void Awake()
-    {
-        _playerControler = player.GetComponent<Niveau_PlayerControler>();
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +54,7 @@ public class DialogueScript : MonoBehaviour
         {
             fader.gameObject.SetActive(false);
         }
-
+        _VisualCue.SetActive(false);
     }
 
     // Update is called once per frame
@@ -98,7 +92,7 @@ public class DialogueScript : MonoBehaviour
         if (begin_dialogue && Input.GetKeyDown(KeyCode.I)) // Phase 1 dialogue : le marchand parle
         {
             source.PlayOneShot(clip_dialogue);
-            _playerControler.Frozen = true; // On gèle les mouvements du joueur
+            _PlayerControler.Frozen = true; // On gèle les mouvements du joueur
             affiche_d_m = true;
             affiche_d_h = false;
         }
@@ -114,15 +108,33 @@ public class DialogueScript : MonoBehaviour
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            _playerControler.Frozen = false;
+            _PlayerControler.Frozen = false;
         }
 
         if (affiche_d_h && Input.GetKeyDown(KeyCode.Y))
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            _playerControler.Frozen = false;
+            _PlayerControler.Frozen = false;
             CloseScene();
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject == _PlayerControler.gameObject)
+        {
+            _VisualCue.SetActive(true);
+            begin_dialogue = true;
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject == _PlayerControler.gameObject)
+        {
+            _VisualCue.SetActive(false);
+            begin_dialogue = false;
         }
     }
 

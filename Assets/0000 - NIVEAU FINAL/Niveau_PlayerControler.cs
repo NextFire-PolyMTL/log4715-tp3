@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Sante))]
 public class Niveau_PlayerControler : MonoBehaviour
 {
     // 0 - CADRICIEL INITIAL
@@ -71,32 +72,23 @@ public class Niveau_PlayerControler : MonoBehaviour
     // 2 - DIALOGUE + JEU DE DE --------------------------------------------------------------
     [Header("Dialogue et jeu de hasard")]
     public bool Frozen = false; // Freeze le joueur si égal à true
-    public Vector3 PlayerPos; // Position initiale du joueur si on relance la scène
-    public bool PlayerFlip = false;
+    public static Vector3 PlayerPos; // Position initiale du joueur si on relance la scène
+    public static bool PlayerFlip = false;
     static public bool StartOpening = false;
-
-
-    [SerializeField]
-    GameObject visualCue;
-
-
 
     public GameObject Weapon;
     public float life = 1000;
 
     // Barre de Vie
     public bool GameOver = false;
-    [SerializeField] Sante sante;
+    private Sante _sante;
 
     // Arbre de compétences
-    private GameObject NombreS;
+    [SerializeField] private Text _Txt;
     public int xp = 0;
-    public Text txt;
-    [SerializeField]
-    GameObject image_money;
 
     private bool DoubleJump;
-    private Bouton bouton;
+    [SerializeField] private Bouton _Bouton;
 
 
 
@@ -107,13 +99,9 @@ public class Niveau_PlayerControler : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody>();
         _MainCamera = Camera.main;
-        sante = GetComponent<Sante>();
+        _sante = GetComponent<Sante>();
 
         _Weapon = Weapon.GetComponent<weaponDamage>();
-
-        NombreS = GameObject.Find("Arbre/Canvas/nombre");
-        txt = NombreS.GetComponent<Text>();
-        bouton = GameObject.Find("Arbre/Canvas/Boutons/Manager").GetComponent<Bouton>();
     }
 
     // Utile pour régler des valeurs aux objets
@@ -140,7 +128,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     void Update()
     {
         TextChange();
-        if (sante.PV_actuels <= 0)
+        if (_sante.PV_actuels <= 0)
         {
             GameOver = true;
         }
@@ -151,17 +139,7 @@ public class Niveau_PlayerControler : MonoBehaviour
 
         PlayerPos = _Rb.position;
         PlayerPos.y = PlayerPos.y + 0.7f; // On met le joueur un peu plus haut au spawn
-        if (_Rb.position.z > 4 && _Rb.position.z < 6)
-        {
-            visualCue.SetActive(true);
-            DialogueScript.begin_dialogue = true;
-        }
-        else
-        {
-            visualCue.SetActive(false);
-            DialogueScript.begin_dialogue = false;
 
-        }
         var horizontal = Input.GetAxis("Horizontal") * MoveSpeed;
 
         if (!GameOver && !Frozen)
@@ -254,7 +232,7 @@ public class Niveau_PlayerControler : MonoBehaviour
                 _Anim.SetBool("Jump", true);
                 DoubleJump = true;
             }
-            else if (DoubleJump && bouton.active_list[0] == 1)
+            else if (DoubleJump && _Bouton.active_list[0] == 1)
             {
                 _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
@@ -342,7 +320,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     }
     private void TextChange()
     {
-        txt.text = xp.ToString();
+        _Txt.text = xp.ToString();
     }
     void Attack_End()
     {

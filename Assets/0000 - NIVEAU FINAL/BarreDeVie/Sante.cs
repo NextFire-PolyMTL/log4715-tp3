@@ -7,10 +7,10 @@ public class Sante : MonoBehaviour
     //Variable pour le setup de la lifebar;
     public int PV_max = 10;
     public int PV_actuels;
-    [SerializeField] BarDeVie bar_de_vie;
-    [SerializeField] GameObject gameover;
-    [SerializeField] int Dégats_Projectiles;
-    [SerializeField] int Dégats_Lave;
+    [SerializeField] private BarDeVie bar_de_vie;
+    [SerializeField] private GameObject gameover;
+    [SerializeField] int Degats_Projectiles;
+    [SerializeField] int Degats_Lave;
 
     // Variables pour la lave
     //[SerializeField] LayerMask ThisFloorIsLava;
@@ -18,8 +18,8 @@ public class Sante : MonoBehaviour
     private float intervalle;
 
     // Variables pour le piège:
-    private GameObject eboul;
-    private GameObject press;
+    [SerializeField] private GameObject _Eboul;
+    [SerializeField] private GameObject _Press;
     private bool active;
     private float time;
 
@@ -27,18 +27,14 @@ public class Sante : MonoBehaviour
     void Start()
     {
         PV_actuels = PV_max;
-        bar_de_vie = GameObject.Find("Character/CyberSoldier/Canvas/LifeBar").GetComponent<BarDeVie>();
-        gameover = GameObject.Find("Character/CyberSoldier/Canvas/GameOver");
         //eboul=GetComponent<GameObject>();
         _Lavaed = false;
         intervalle = 0;
 
-        eboul = GameObject.Find("Level/eboul");
-        press = GameObject.Find("Level/Pressure");
         active = false;
         time = 0;
-        Dégats_Projectiles = 2;
-        Dégats_Lave = 2;
+        Degats_Projectiles = 2;
+        Degats_Lave = 2;
     }
 
     // Update is called once per frame
@@ -50,7 +46,7 @@ public class Sante : MonoBehaviour
             intervalle += Time.deltaTime;
             if (intervalle > 0.5)
             {
-                Degats(Dégats_Lave);
+                Degats(Degats_Lave);
                 intervalle = 0;
             }
 
@@ -72,12 +68,12 @@ public class Sante : MonoBehaviour
             //trap3.SetActive(true);
             //trap4.SetActive(true);
             //trap5.SetActive(true);
-            eboul.SetActive(true);
+            _Eboul.SetActive(true);
             time += Time.deltaTime;
         }
         else
         {
-            eboul.SetActive(false);
+            _Eboul.SetActive(false);
         }
         if (time == 0.8)
         {
@@ -85,7 +81,7 @@ public class Sante : MonoBehaviour
         }
         if (time > 1)
         {
-            eboul.SetActive(false);
+            _Eboul.SetActive(false);
         }
 
     }
@@ -116,7 +112,7 @@ public class Sante : MonoBehaviour
         }
         if (coll.gameObject.tag == "projectile")
         {
-            Degats(Dégats_Projectiles);
+            Degats(Degats_Projectiles);
 
         }
     }

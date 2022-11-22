@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _ButtonController : MonoBehaviour
+public class ButtonController : MonoBehaviour
 {
-    GameObject _LeftWall { get; set; }
-
-    void Awake()
-    {
-        _LeftWall = GameObject.Find("Wall Left");
-    }
+    [SerializeField]
+    private GameObject _ToggledObject;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +24,7 @@ public class _ButtonController : MonoBehaviour
         // Check if the collision is on top of the button
         if (collision.contacts[0].normal.y < 0)
         {
-            _LeftWall.SetActive(false);
+            _ToggledObject.SetActive(false);
             var renderer = transform.GetComponent<Renderer>();
             renderer.material.color = Color.green;
         }
