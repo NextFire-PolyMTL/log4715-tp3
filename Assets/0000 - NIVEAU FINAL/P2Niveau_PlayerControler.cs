@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 [RequireComponent(typeof(Sante))]
-public class Niveau_PlayerControler : MonoBehaviour
+public class P2Niveau_PlayerControler : MonoBehaviour
 {
     // 0 - CADRICIEL INITIAL
     [Header("Objets génériques")]
