@@ -72,8 +72,9 @@ public class Niveau_PlayerControler : MonoBehaviour
     // 2 - DIALOGUE + JEU DE DE --------------------------------------------------------------
     [Header("Dialogue et jeu de hasard")]
     public bool Frozen = false; // Freeze le joueur si égal à true
-    public static Vector3 PlayerPos; // Position initiale du joueur si on relance la scène
-    public static bool PlayerFlip = false;
+    public static bool Stop = false; // Gèle les déplacements du joueur lors d'un dialogue
+    private Vector3 PlayerPos; // Position initiale du joueur si on relance la scène
+    private bool PlayerFlip = false;
     static public bool StartOpening = false;
 
     public GameObject Weapon;
@@ -142,7 +143,7 @@ public class Niveau_PlayerControler : MonoBehaviour
 
         var horizontal = Input.GetAxis("Horizontal") * MoveSpeed;
 
-        if (!GameOver && !Frozen)
+        if (!GameOver && !Frozen && !Stop)
         { // METTEZ VOS FONCTIONS DANS LE IF : le booléen freeze = true retire le contrôle du personnage
             HorizontalMove(horizontal);
             FlipCharacter(horizontal);

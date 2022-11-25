@@ -59,65 +59,59 @@ public class DialogueScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (affiche_d_m)
+    {   
+
+        if (begin_dialogue && Input.GetKeyDown(KeyCode.I)) // Phase 1 dialogue : le marchand parle
         {
+            source.PlayOneShot(clip_dialogue);
+            Niveau_PlayerControler.Stop = true; // On gèle les mouvements du joueur
+            affiche_d_m = true;
+            affiche_d_h = false;
             image_dialogue_marchand.SetActive(true);
             text_marchand.SetActive(true);
             text_marchand2.SetActive(true);
             image_dialogue_heros.SetActive(false);
             text_heros.SetActive(false);
         }
-        else if (affiche_d_h)
+
+        else if (affiche_d_m && Input.GetKeyDown(KeyCode.Space)) // Phase 2 dialogue : le joueur répond
         {
+            source.PlayOneShot(clip_dialogue);
+            affiche_d_m = false;
+            affiche_d_h = true;
             image_dialogue_heros.SetActive(true);
             text_heros.SetActive(true);
             image_dialogue_marchand.SetActive(false);
             text_marchand.SetActive(false);
             text_marchand2.SetActive(false);
         }
-        else
+
+        else if (affiche_d_h && Input.GetKeyDown(KeyCode.Escape))
         {
+            source.PlayOneShot(clip_dialogue);
+            affiche_d_h = false;
+            Niveau_PlayerControler.Stop = false;
             image_dialogue_heros.SetActive(false);
             text_heros.SetActive(false);
             image_dialogue_marchand.SetActive(false);
             text_marchand.SetActive(false);
             text_marchand2.SetActive(false);
+            
         }
 
-    }
-
-    void FixedUpdate()
-    {
-        if (begin_dialogue && Input.GetKeyDown(KeyCode.I)) // Phase 1 dialogue : le marchand parle
-        {
-            source.PlayOneShot(clip_dialogue);
-            _PlayerControler.Frozen = true; // On gèle les mouvements du joueur
-            affiche_d_m = true;
-            affiche_d_h = false;
-        }
-
-        if (affiche_d_m && Input.GetKeyDown(KeyCode.Space)) // Phase 2 dialogue : le joueur répond
-        {
-            source.PlayOneShot(clip_dialogue);
-            affiche_d_m = false;
-            affiche_d_h = true;
-        }
-
-        if (affiche_d_h && Input.GetKeyDown(KeyCode.Escape))
+        else if (affiche_d_h && Input.GetKeyDown(KeyCode.Y))
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            _PlayerControler.Frozen = false;
-        }
-
-        if (affiche_d_h && Input.GetKeyDown(KeyCode.Y))
-        {
-            source.PlayOneShot(clip_dialogue);
-            affiche_d_h = false;
-            _PlayerControler.Frozen = false;
+            Niveau_PlayerControler.Stop = false;
+            image_dialogue_heros.SetActive(false);
+            text_heros.SetActive(false);
+            image_dialogue_marchand.SetActive(false);
+            text_marchand.SetActive(false);
+            text_marchand2.SetActive(false);
             CloseScene();
         }
+
     }
 
     void OnTriggerEnter(Collider collider)
