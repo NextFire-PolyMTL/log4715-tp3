@@ -243,7 +243,7 @@ public class P2Niveau_PlayerControler : MonoBehaviour
         {
             if (Grounded)
             {
-                _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
+                _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
                 Grounded = false;
                 _Anim.SetBool("Grounded", false);
@@ -329,6 +329,26 @@ public class P2Niveau_PlayerControler : MonoBehaviour
         }
 
     }
+    
+    void OnCollisionExit(Collision coll)
+    {
+        // On s'assure de bien être en contact avec le sol
+        if ((WhatIsGround & (1 << coll.gameObject.layer)) == 0)
+            return;
+
+
+        if (coll.gameObject.tag == "mud")
+        {
+            _isOnMud = false;
+        }
+        
+        if (coll.gameObject.tag == "ice")
+        {
+            _isOnIce = false;
+        }
+
+    }
+
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "frag")

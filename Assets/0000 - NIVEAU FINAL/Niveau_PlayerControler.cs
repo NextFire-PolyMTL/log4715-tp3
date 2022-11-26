@@ -169,6 +169,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
+        
         if (_isOnTrampoline)
         {
             //_Rb.AddForce(new Vector3(0, trampoForce*Mathf.Abs(_Rb.velocity.y),0));
@@ -243,7 +244,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         {
             if (Grounded)
             {
-                _Rb.velocity = new Vector3(_Rb.velocity.x, 0, 0);
+                _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y, 0);
                 _Rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
                 Grounded = false;
                 _Anim.SetBool("Grounded", false);
@@ -324,6 +325,26 @@ public class Niveau_PlayerControler : MonoBehaviour
             Debug.Log(GetComponent<Collider>().material);
         }
         else
+        {
+            
+            Debug.Log("plus sur glace");
+            _isOnIce = false;
+        }
+
+    }
+    void OnCollisionExit(Collision coll)
+    {
+        // On s'assure de bien être en contact avec le sol
+        if ((WhatIsGround & (1 << coll.gameObject.layer)) == 0)
+            return;
+
+
+        if (coll.gameObject.tag == "mud")
+        {
+            _isOnMud = false;
+        }
+        
+        if (coll.gameObject.tag == "ice")
         {
             _isOnIce = false;
         }
