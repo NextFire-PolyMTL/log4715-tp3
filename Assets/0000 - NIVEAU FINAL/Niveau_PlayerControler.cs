@@ -136,6 +136,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         {
             var yForce = _movementManager.TrampoForce * (Mathf.Abs(_rb.velocity.y) + 0.25f * Mathf.Abs(_rb.velocity.z));
             _rb.AddForce(new Vector3(0, yForce, 0));
+            _isOnTrampoline = false; // FIXME: ???
         }
         else if (_isOnIce)
         {
@@ -249,36 +250,11 @@ public class Niveau_PlayerControler : MonoBehaviour
             _anim.SetBool("Grounded", Grounded);
         }
 
-        if (coll.gameObject.tag == "trampoline")
-        {
-            _isOnTrampoline = true;
-        }
-        else
-        {
-            _isOnTrampoline = false;
-        }
+        _isOnTrampoline = (coll.gameObject.tag == "trampoline");
+        _isOnMud = (coll.gameObject.tag == "mud");
+        _isOnIce = (coll.gameObject.tag == "ice");
 
-        if (coll.gameObject.tag == "mud")
-        {
-            _isOnMud = true;
-        }
-        else
-        {
-            _isOnMud = false;
-        }
-
-        if (coll.gameObject.tag == "ice")
-        {
-            _isOnIce = true;
-            // Debug.Log("ice floor");
-            GetComponent<Collider>().material.dynamicFriction = 0;
-            // Debug.Log(GetComponent<Collider>().material);
-        }
-        else
-        {
-            // Debug.Log("plus sur glace");
-            _isOnIce = false;
-        }
+        if (_isOnIce) GetComponent<Collider>().material.dynamicFriction = 0;
     }
 
     void OnCollisionExit(Collision coll)
@@ -286,15 +262,9 @@ public class Niveau_PlayerControler : MonoBehaviour
         // On s'assure de bien être en contact avec le sol
         if ((_movementManager.WhatIsGround & (1 << coll.gameObject.layer)) == 0) return;
 
-        if (coll.gameObject.tag == "mud")
-        {
-            _isOnMud = false;
-        }
-
-        if (coll.gameObject.tag == "ice")
-        {
-            _isOnIce = false;
-        }
+        if (coll.gameObject.tag == "trampoline") _isOnTrampoline = false;
+        if (coll.gameObject.tag == "mud") _isOnMud = false;
+        if (coll.gameObject.tag == "ice") _isOnIce = false;
     }
 
     void OnTriggerEnter(Collider coll)
