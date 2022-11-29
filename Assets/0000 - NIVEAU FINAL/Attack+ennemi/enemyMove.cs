@@ -150,6 +150,7 @@ public class enemyMove : MonoBehaviour
                 Debug.Log(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0"));
                 //if(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0")){
                 GameObject fire = GameObject.Instantiate(projectile, firePoint.position, firePoint.rotation) as GameObject;
+                fire.tag = "projectile";
                 fire.GetComponent<projectileBehavior>().target = targetPosition;
                 GameObject.Destroy(fire, 3f);
                 deltaTime = 0;

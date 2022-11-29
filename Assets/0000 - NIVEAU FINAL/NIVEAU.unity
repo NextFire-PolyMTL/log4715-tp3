@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4499,9 +4499,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
-        m_MethodName: DebloqueSkill10
+        m_MethodName: DebloqueSkill9
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5260,6 +5260,115 @@ Transform:
   m_Father: {fileID: 1956617333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &309363327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309363328}
+  - component: {fileID: 309363330}
+  - component: {fileID: 309363332}
+  - component: {fileID: 309363329}
+  - component: {fileID: 309363331}
+  m_Layer: 0
+  m_Name: Shared
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &309363328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309363327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -222.08075, y: 938.2432, z: -999.8338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309363329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309363327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8868545be49047588a988bf6d23aa1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XP: 0
+  unlockedSkills: 00000000000000000000
+  _txt: {fileID: 715346408}
+--- !u!114 &309363330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309363327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e78da67ac5b49ffbb8c18654b12bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PV_max: 10
+  bar_de_vie: {fileID: 488973522}
+  gameover: {fileID: 480883782}
+  Degats_Projectiles: 1
+  Degats_Lave: 1
+  _isOnLava: 0
+  _Eboul: {fileID: 1026395081}
+  _Press: {fileID: 1454325877}
+  _piegeActive: 0
+--- !u!114 &309363331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309363327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6ef38e2bd094c4fbb0f811cdfda226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HUD: {fileID: 307668193}
+  _Arbre: {fileID: 1322086241}
+--- !u!114 &309363332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309363327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d8fdf3c87a94d35a81ec46fd9d5f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  MoveSpeed: 5
+  MudEffect: 0.5
+  JumpForce: 7
+  TrampoForce: 10
+  DashingPower: 18
+  DashingTime: 0.2
+  DashingCooldown: 1
+  ClipDash: {fileID: 8300000, guid: 98851fa3ef760f94ebc2d664d6b7a2ef, type: 3}
+  ClipSaut: {fileID: 8300000, guid: e2cbea86c57e30144873c1679a637f9f, type: 3}
 --- !u!1 &311363172
 GameObject:
   m_ObjectHideFlags: 0
@@ -7707,9 +7816,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
-        m_MethodName: DebloqueSkill7
+        m_MethodName: DebloqueSkill5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8676,9 +8785,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
-        m_MethodName: DebloqueSkill9
+        m_MethodName: DebloqueSkill7
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11059,7 +11168,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill8
         m_Mode: 1
@@ -11805,9 +11914,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
-        m_MethodName: DebloqueSkill4
+        m_MethodName: DebloqueSkill10
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12783,7 +12892,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill2
         m_Mode: 1
@@ -17210,8 +17319,6 @@ GameObject:
   - component: {fileID: 967482691}
   - component: {fileID: 967482690}
   - component: {fileID: 967482689}
-  - component: {fileID: 967482694}
-  - component: {fileID: 967482695}
   - component: {fileID: 967482693}
   - component: {fileID: 967482696}
   m_Layer: 0
@@ -17316,61 +17423,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae190187cf919742991f82a8d302a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  JumpForce: 7
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  trampoForce: 7
-  mudEffect: 0.3
-  dashingPower: 18
-  dashingTime: 0.2
-  dashingCooldown: 1
-  tr: {fileID: 148904828}
-  source: {fileID: 1524311988}
-  clip_dash: {fileID: 8300000, guid: 98851fa3ef760f94ebc2d664d6b7a2ef, type: 3}
-  clip_saut: {fileID: 8300000, guid: e2cbea86c57e30144873c1679a637f9f, type: 3}
+  Grounded: 0
   Frozen: 0
-  Weapon: {fileID: 1614654540}
-  GameOver: 0
-  _Txt: {fileID: 715346408}
-  xp: 0
-  _Bouton: {fileID: 1381739569}
-  Chargement_Dash: {fileID: 30774130}
---- !u!114 &967482694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967482685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e78da67ac5b49ffbb8c18654b12bf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PV_max: 10
-  PV_actuels: 10
-  bar_de_vie: {fileID: 488973522}
-  gameover: {fileID: 480883782}
-  Degats_Projectiles: 1
-  Degats_Lave: 1
-  _Eboul: {fileID: 1026395081}
-  _Press: {fileID: 1454325877}
---- !u!114 &967482695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967482685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6ef38e2bd094c4fbb0f811cdfda226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _HUD: {fileID: 307668193}
-  _Arbre: {fileID: 1322086241}
+  _movementManager: {fileID: 309363332}
+  _skillsManager: {fileID: 309363329}
+  _sante: {fileID: 309363330}
+  _chargementDash: {fileID: 30774130}
+  _tr: {fileID: 148904828}
+  _source: {fileID: 1524311988}
 --- !u!114 &967482696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18066,7 +18126,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill1
         m_Mode: 1
@@ -18077,7 +18137,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &998149267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18880,7 +18940,6 @@ RectTransform:
   - {fileID: 582419452}
   - {fileID: 285127402}
   - {fileID: 613604848}
-  - {fileID: 1381739568}
   m_Father: {fileID: 1509171565}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19916,7 +19975,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill6
         m_Mode: 1
@@ -23064,8 +23123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24975632b18e74b996d2bbdc544571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Porte: {fileID: 1047012850}
-  _Prisonnier: {fileID: 515523304}
+  _porte: {fileID: 1047012850}
+  _prisonnier: {fileID: 515523304}
+  _skillsManager: {fileID: 309363329}
+  _successMessage: {fileID: 1000965081}
 --- !u!65 &1260706925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23952,8 +24013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97ea5be1ac3c7a44979dc13e972bfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerControler: {fileID: 967482693}
-  active_list: 
+  _skillManager: {fileID: 309363329}
 --- !u!4 &1322086243
 Transform:
   m_ObjectHideFlags: 0
@@ -24688,57 +24748,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380708966}
   m_CullTransparentMesh: 1
---- !u!1 &1381739567
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1381739568}
-  - component: {fileID: 1381739569}
-  m_Layer: 5
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1381739568
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381739567}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1032970080}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1381739569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381739567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97ea5be1ac3c7a44979dc13e972bfc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _PlayerControler: {fileID: 967482693}
-  active_list: 
 --- !u!1 &1393005630
 GameObject:
   m_ObjectHideFlags: 0
@@ -28005,8 +28014,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24975632b18e74b996d2bbdc544571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Porte: {fileID: 1047012850}
-  _Prisonnier: {fileID: 515523304}
+  _porte: {fileID: 1047012850}
+  _prisonnier: {fileID: 515523304}
+  _skillsManager: {fileID: 309363329}
+  _successMessage: {fileID: 1000965081}
 --- !u!65 &1568383227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28435,8 +28446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24975632b18e74b996d2bbdc544571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Porte: {fileID: 13298962}
-  _Prisonnier: {fileID: 1776916295}
+  _porte: {fileID: 13298962}
+  _prisonnier: {fileID: 1776916295}
+  _skillsManager: {fileID: 309363329}
+  _successMessage: {fileID: 1000965081}
 --- !u!65 &1600428739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28504,8 +28517,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24975632b18e74b996d2bbdc544571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Porte: {fileID: 13298962}
-  _Prisonnier: {fileID: 1776916295}
+  _porte: {fileID: 13298962}
+  _prisonnier: {fileID: 1776916295}
+  _skillsManager: {fileID: 309363329}
+  _successMessage: {fileID: 1000965081}
 --- !u!65 &1603932487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28821,9 +28836,8 @@ GameObject:
   - component: {fileID: 1645038742}
   - component: {fileID: 1645038741}
   - component: {fileID: 1645038740}
-  - component: {fileID: 1645038739}
-  - component: {fileID: 1645038746}
   - component: {fileID: 1645038745}
+  - component: {fileID: 1645038746}
   m_Layer: 0
   m_Name: CyberSoldier
   m_TagString: Hero
@@ -28831,26 +28845,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1645038739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645038734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e78da67ac5b49ffbb8c18654b12bf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PV_max: 10
-  PV_actuels: 10
-  bar_de_vie: {fileID: 488973522}
-  gameover: {fileID: 480883782}
-  Degats_Projectiles: 1
-  Degats_Lave: 1
-  _Eboul: {fileID: 2129367972}
-  _Press: {fileID: 1871800727}
 --- !u!65 &1645038740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28942,13 +28936,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645038734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91fc6a3dd4c2128499c57abbbaea9185, type: 3}
+  m_Script: {fileID: 11500000, guid: dae190187cf919742991f82a8d302a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _WhatIsIceTag: ice
-  _IceBlock: {fileID: 884670478}
-  _DelayUntilFreeze: 1
-  _IceBreakNbActions: 5
+  Grounded: 0
+  Frozen: 0
+  _movementManager: {fileID: 309363332}
+  _skillsManager: {fileID: 309363329}
+  _sante: {fileID: 309363330}
+  _chargementDash: {fileID: 30774130}
+  _tr: {fileID: 313156847}
+  _source: {fileID: 1883353619}
 --- !u!114 &1645038746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28958,29 +28956,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645038734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb59349731b2ca4f82e369c6ef4b373, type: 3}
+  m_Script: {fileID: 11500000, guid: 130fe88be9aba46c99792e6156aa907d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  JumpForce: 7
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  trampoForce: 7
-  mudEffect: 0.3
-  dashingPower: 18
-  dashingTime: 0.2
-  dashingCooldown: 1
-  tr: {fileID: 313156847}
-  source: {fileID: 1883353619}
-  clip_dash: {fileID: 8300000, guid: 98851fa3ef760f94ebc2d664d6b7a2ef, type: 3}
-  clip_saut: {fileID: 8300000, guid: e2cbea86c57e30144873c1679a637f9f, type: 3}
-  Frozen: 0
-  Weapon: {fileID: 1050795054}
-  GameOver: 0
-  xp: 0
-  _Bouton: {fileID: 1381739569}
-  Chargement_Dash: {fileID: 30774130}
+  _WhatIsIceTag: ice
+  _IceBlock: {fileID: 884670478}
+  _DelayUntilFreeze: 1
+  _IceBreakNbActions: 5
 --- !u!1 &1647467595
 GameObject:
   m_ObjectHideFlags: 0
@@ -30076,7 +30058,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill3
         m_Mode: 1
@@ -35028,9 +35010,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381739569}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
-        m_MethodName: DebloqueSkill5
+        m_MethodName: DebloqueSkill4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

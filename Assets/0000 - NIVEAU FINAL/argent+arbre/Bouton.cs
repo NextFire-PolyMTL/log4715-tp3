@@ -1,22 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using System.Windows.Forms;
 using UnityEngine.UI;
-//using nombre_xp;
 
 public class Bouton : MonoBehaviour
 {
-    [SerializeField] private Niveau_PlayerControler _PlayerControler;
-    //   private Script nombreXP;
-
-    //   public Button bouton1;
-    //  private Button[] Boutons;
+    [SerializeField] private SkillsManager _skillManager;
     private List<Button> bouton_list;
     private List<GameObject> fleche_list;
-    public int[] active_list;
     private List<GameObject> couts;
-    private int[] coûts_list;
+    private int[] couts_list;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,14 +25,7 @@ public class Bouton : MonoBehaviour
         bouton_list.Add(GameObject.Find("Arbre/Canvas/Boutons/Comp8").GetComponent<Button>());
         bouton_list.Add(GameObject.Find("Arbre/Canvas/Boutons/Comp7").GetComponent<Button>());
         bouton_list.Add(GameObject.Find("Arbre/Canvas/Boutons/Comp9").GetComponent<Button>());
-        active_list = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        //nombreScript=GetComponent<nombre_xp>();
-        //NombreS=GameObject.Find("Arbre/Canvas/nombre");
-        // NombreS = GameObject.Find("Character/CyberSoldier").GetComponent<Niveau_PlayerControler>();
-        //  nombreXP=NombreS.GetComponent<Script>();
-        //  bouton1=GameObject.Find("Arbre/Canvas/Boutons/Comp1").GetComponent<Button>();
-        // Boutons.Add(GameObject.Find("Arbre/Canvas/Boutons/Comp1").GetComponent<Button>());
-        // Boutons[0]=GameObject.Find("Arbre/Canvas/Boutons/Comp1").GetComponent<Button>();
+
         fleche_list = new List<GameObject>();
         fleche_list.Add(GameObject.Find("Arbre/Canvas/Fleches/Fleche1/noir1"));
         fleche_list.Add(GameObject.Find("Arbre/Canvas/Fleches/Fleche1/noir2"));
@@ -77,9 +64,9 @@ public class Bouton : MonoBehaviour
 
         couts.Add(GameObject.Find("Arbre/Canvas/Boutons/Comp9/niv10"));
 
-        coûts_list = new int[] { 130, 200, 200, 250, 340, 340, 400, 470, 470, 620 };
-
+        couts_list = new int[] { 130, 200, 200, 250, 340, 340, 400, 470, 470, 620 };
     }
+
     void Start()
     {
         for (int i = 1; i < 10; i++)
@@ -89,22 +76,17 @@ public class Bouton : MonoBehaviour
             couleur.disabledColor = Color.black;
             bouton_list[i].colors = couleur;
         }
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //int nb=NombreS.GetComponent<nombre_xp>().xp;
-        int nb = _PlayerControler.xp;
-        // List<Button> BoutonsActifs=new List<Button>();
+        int nb = _skillManager.XP;
         for (int i = 0; i < 10; i++)
         {
             if (bouton_list[i].interactable)
             {
-                if (nb - coûts_list[i] > 0)
+                if (nb - couts_list[i] > 0)
                 {
                     couts[i].GetComponent<TMPro.TextMeshProUGUI>().color = Color.green;
                 }
@@ -115,20 +97,13 @@ public class Bouton : MonoBehaviour
                 // BoutonsActifs.Add(bouton_list[i]);
             }
         }
-
-
-        //   for (int i=0;i<10;i++){
-        //    if (nb-coûts_list[i]>0){
-        //      coûts[i].GetComponent<TMPro.TextMeshProUGUI>().color=Color.green;
-        //    }
-        //  }
-
     }
+
     public void DebloqueSkill1()
     {
 
         //bool c1=NombreS.GetComponent<nombre_xp>().EnleverXP(130);
-        bool c1 = _PlayerControler.EnleverXP(130);
+        bool c1 = _skillManager.EnleverXP(130);
         //print(c1);
         if (c1 == true)
         {
@@ -143,7 +118,7 @@ public class Bouton : MonoBehaviour
             bouton_list[2].colors = couleur2;
 
             bouton_list[0].interactable = false;
-            active_list[0] = 1;
+            _skillManager.unlockedSkills[0] = true;
             ColorBlock couleur3 = bouton_list[0].colors;
             couleur3.disabledColor = Color.green;
             bouton_list[0].colors = couleur3;
@@ -160,11 +135,11 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill2()
     {
         //bool c2=NombreS.GetComponent<nombre_xp>().EnleverXP(200);
-        bool c2 = _PlayerControler.EnleverXP(200);
+        bool c2 = _skillManager.EnleverXP(200);
         if (c2 == true)
         {
             bouton_list[1].interactable = false;
-            active_list[1] = 1;
+            _skillManager.unlockedSkills[1] = true;
 
             ColorBlock couleur = bouton_list[1].colors;
             couleur.disabledColor = Color.green;
@@ -173,7 +148,7 @@ public class Bouton : MonoBehaviour
             fleche_list[3].SetActive(false);
             fleche_list[4].SetActive(false);
             //   bouton_list[1].disabledColor=Color.green;
-            if (active_list[2] == 1)
+            if (_skillManager.unlockedSkills[2])
             {
                 bouton_list[3].interactable = true;
             }
@@ -187,18 +162,18 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill3()
     {
         //bool c3=NombreS.GetComponent<nombre_xp>().EnleverXP(200);
-        bool c3 = _PlayerControler.EnleverXP(200);
+        bool c3 = _skillManager.EnleverXP(200);
         if (c3 == true)
         {
             bouton_list[2].interactable = false;
-            active_list[2] = 1;
+            _skillManager.unlockedSkills[2] = true;
 
 
             ColorBlock couleur = bouton_list[2].colors;
             couleur.disabledColor = Color.green;
             bouton_list[2].colors = couleur;
             //   bouton_list[2].disabledColor=Color.green;
-            if (active_list[1] == 1)
+            if (_skillManager.unlockedSkills[1])
             {
                 bouton_list[3].interactable = true;
             }
@@ -216,18 +191,18 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill4()
     {
         //bool c4=NombreS.GetComponent<nombre_xp>().EnleverXP(250);
-        bool c4 = _PlayerControler.EnleverXP(250);
+        bool c4 = _skillManager.EnleverXP(250);
         if (c4 == true)
         {
             bouton_list[3].interactable = false;
-            active_list[3] = 1;
+            _skillManager.unlockedSkills[3] = true;
 
 
             ColorBlock couleur = bouton_list[3].colors;
             couleur.disabledColor = Color.green;
             bouton_list[3].colors = couleur;
             //     bouton_list[3].disabledColor=Color.green;
-            if (active_list[4] == 1 && active_list[5] == 1)
+            if (_skillManager.unlockedSkills[4] && _skillManager.unlockedSkills[5])
             {
                 bouton_list[6].interactable = true;
             }
@@ -241,17 +216,17 @@ public class Bouton : MonoBehaviour
     {
         //bool c5=NombreS.GetComponent<nombre_xp>().EnleverXP(340);
         //Debug.Log(c5);
-        bool c5 = _PlayerControler.EnleverXP(340);
+        bool c5 = _skillManager.EnleverXP(340);
 
         ColorBlock couleur = bouton_list[4].colors;
         if (c5)
         {
             bouton_list[4].interactable = false;
-            active_list[4] = 1;
+            _skillManager.unlockedSkills[4] = true;
             couleur.disabledColor = Color.green;
             bouton_list[4].colors = couleur;
             //     bouton_list[4].disabledColor=Color.green;
-            if (active_list[3] == 1 && active_list[5] == 1)
+            if (_skillManager.unlockedSkills[3] && _skillManager.unlockedSkills[5])
             {
                 bouton_list[6].interactable = true;
             }
@@ -269,17 +244,17 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill6()
     {
         //bool c6=NombreS.GetComponent<nombre_xp>().EnleverXP(340);
-        bool c6 = _PlayerControler.EnleverXP(340);
+        bool c6 = _skillManager.EnleverXP(340);
         if (c6 == true)
         {
             bouton_list[5].interactable = false;
-            active_list[5] = 1;
+            _skillManager.unlockedSkills[5] = true;
 
             ColorBlock couleur = bouton_list[5].colors;
             couleur.disabledColor = Color.green;
             bouton_list[5].colors = couleur;
             //     bouton_list[5].disabledColor=Color.green;
-            if (active_list[3] == 1 && active_list[4] == 1)
+            if (_skillManager.unlockedSkills[3] && _skillManager.unlockedSkills[4])
             {
                 bouton_list[6].interactable = true;
             }
@@ -296,17 +271,17 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill7()
     {
         //bool c7=NombreS.GetComponent<nombre_xp>().EnleverXP(400);
-        bool c7 = _PlayerControler.EnleverXP(400);
+        bool c7 = _skillManager.EnleverXP(400);
         if (c7 == true)
         {
-            active_list[6] = 1;
+            _skillManager.unlockedSkills[6] = true;
             bouton_list[6].interactable = false;
 
             ColorBlock couleur = bouton_list[6].colors;
             couleur.disabledColor = Color.green;
             bouton_list[6].colors = couleur;
             //     bouton_list[6].disabledColor=Color.green;
-            if (active_list[7] == 1 && active_list[8] == 1)
+            if (_skillManager.unlockedSkills[7] && _skillManager.unlockedSkills[8])
             {
                 bouton_list[9].interactable = true;
             }
@@ -320,17 +295,17 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill8()
     {
         //bool c8=NombreS.GetComponent<nombre_xp>().EnleverXP(470);
-        bool c8 = _PlayerControler.EnleverXP(470);
+        bool c8 = _skillManager.EnleverXP(470);
         if (c8 == true)
         {
-            active_list[7] = 1;
+            _skillManager.unlockedSkills[7] = true;
             bouton_list[7].interactable = false;
 
             ColorBlock couleur = bouton_list[7].colors;
             couleur.disabledColor = Color.green;
             bouton_list[7].colors = couleur;
             //   bouton_list[7].disabledColor=Color.green;
-            if (active_list[6] == 1 && active_list[8] == 1)
+            if (_skillManager.unlockedSkills[6] && _skillManager.unlockedSkills[8])
             {
                 bouton_list[9].interactable = true;
             }
@@ -344,17 +319,17 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill9()
     {
         //bool c9=NombreS.GetComponent<nombre_xp>().EnleverXP(470);
-        bool c9 = _PlayerControler.EnleverXP(470);
+        bool c9 = _skillManager.EnleverXP(470);
         if (c9 == true)
         {
-            active_list[8] = 1;
+            _skillManager.unlockedSkills[8] = true;
             bouton_list[8].interactable = false;
 
             ColorBlock couleur = bouton_list[8].colors;
             couleur.disabledColor = Color.green;
             bouton_list[8].colors = couleur;
             //   bouton_list[8].disabledColor=Color.green;
-            if (active_list[7] == 1 && active_list[6] == 1)
+            if (_skillManager.unlockedSkills[7] && _skillManager.unlockedSkills[6])
             {
                 bouton_list[9].interactable = true;
             }
@@ -368,10 +343,10 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill10()
     {
         //bool c10=NombreS.GetComponent<nombre_xp>().EnleverXP(620);
-        bool c10 = _PlayerControler.EnleverXP(620);
+        bool c10 = _skillManager.EnleverXP(620);
         if (c10 == true)
         {
-            active_list[9] = 1;
+            _skillManager.unlockedSkills[9] = true;
             bouton_list[9].interactable = false;
 
             ColorBlock couleur = bouton_list[9].colors;

@@ -59,12 +59,12 @@ public class DialogueScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
 
         if (begin_dialogue && Input.GetKeyDown(KeyCode.I)) // Phase 1 dialogue : le marchand parle
         {
             source.PlayOneShot(clip_dialogue);
-            Niveau_PlayerControler.Stop = true; // On gèle les mouvements du joueur
+            Niveau_PlayerControler.DialogueStop = true; // On gèle les mouvements du joueur
             affiche_d_m = true;
             affiche_d_h = false;
             image_dialogue_marchand.SetActive(true);
@@ -90,20 +90,20 @@ public class DialogueScript : MonoBehaviour
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            Niveau_PlayerControler.Stop = false;
+            Niveau_PlayerControler.DialogueStop = false;
             image_dialogue_heros.SetActive(false);
             text_heros.SetActive(false);
             image_dialogue_marchand.SetActive(false);
             text_marchand.SetActive(false);
             text_marchand2.SetActive(false);
-            
+
         }
 
         else if (affiche_d_h && Input.GetKeyDown(KeyCode.Y))
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            Niveau_PlayerControler.Stop = false;
+            Niveau_PlayerControler.DialogueStop = false;
             image_dialogue_heros.SetActive(false);
             text_heros.SetActive(false);
             image_dialogue_marchand.SetActive(false);
