@@ -129,7 +129,7 @@ public class Bouton : MonoBehaviour
 
         //bool c1=NombreS.GetComponent<nombre_xp>().EnleverXP(130);
         bool c1 = _PlayerControler.EnleverXP(130);
-        print(c1);
+        //print(c1);
         if (c1 == true)
         {
             bouton_list[1].interactable = true;

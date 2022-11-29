@@ -9,8 +9,8 @@ public class Sante : MonoBehaviour
     public int PV_actuels;
     [SerializeField] private BarDeVie bar_de_vie;
     [SerializeField] private GameObject gameover;
-    [SerializeField] int Degats_Projectiles;
-    [SerializeField] int Degats_Lave;
+    [SerializeField] int Degats_Projectiles=1;
+    [SerializeField] int Degats_Lave=1;
 
     // Variables pour la lave
     //[SerializeField] LayerMask ThisFloorIsLava;
@@ -33,8 +33,8 @@ public class Sante : MonoBehaviour
 
         active = false;
         time = 0;
-        Degats_Projectiles = 2;
-        Degats_Lave = 2;
+       // Degats_Projectiles = 2;
+        //Degats_Lave = 2;
     }
 
     // Update is called once per frame
@@ -108,12 +108,17 @@ public class Sante : MonoBehaviour
         }  //créer une animation?
         if (coll.gameObject.layer == 10)
         {
+            _Lavaed=false;
             active = true;
         }
         if (coll.gameObject.tag == "projectile")
         {
             Degats(Degats_Projectiles);
+            
 
+        }
+        else{
+            _Lavaed=false;
         }
     }
 

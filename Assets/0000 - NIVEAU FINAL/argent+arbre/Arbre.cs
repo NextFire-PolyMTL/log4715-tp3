@@ -23,6 +23,11 @@ public class Arbre : MonoBehaviour
             allume = !allume;
             _Arbre.SetActive(allume);
             _HUD.SetActive(!allume);
+            if (allume){
+                Time.timeScale=0f;
+            }else{
+                Time.timeScale=1f;
+            }
         }
     }
 }

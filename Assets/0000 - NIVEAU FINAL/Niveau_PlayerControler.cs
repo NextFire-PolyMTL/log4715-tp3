@@ -79,7 +79,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     static public bool StartOpening = false;
 
     public GameObject Weapon;
-    public float life = 1000;
+    //public float life = 1000;
 
     // Barre de Vie
     public bool GameOver = false;
@@ -105,6 +105,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         _MainCamera = GetComponentInChildren<Camera>();
         _sante = GetComponent<Sante>();
         _Weapon = Weapon.GetComponent<weaponDamage>();
+        //_Txt=GameObject.Find("Arbre/Canvas/nombre").GetComponent<Text>();
     }
 
     // Utile pour régler des valeurs aux objets
@@ -131,10 +132,13 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Vérifie les entrées de commandes du joueur
     void Update()
     {
+        
         TextChange();
         if (_sante.PV_actuels <= 0)
         {
             GameOver = true;
+            _Rb.velocity=new Vector3(0,0,0);
+            _Anim.SetFloat("MoveSpeed",0f);
         }
         if (isDashing)
         {

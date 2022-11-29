@@ -79,20 +79,23 @@ public class P2Niveau_PlayerControler : MonoBehaviour
     static public bool StartOpening = false;
 
     public GameObject Weapon;
-    public float life = 1000;
+    //public float life = 1000;
 
     // Barre de Vie
     public bool GameOver = false;
     private Sante _sante;
 
     // Arbre de compétences
-    [SerializeField] private Text _Txt;
+    //[SerializeField] private Text _Txt;
     public int xp = 0;
 
     private bool DoubleJump;
     [SerializeField] private Bouton _Bouton;
 
     [SerializeField] private TextMeshPro Chargement_Dash;
+
+    private Niveau_PlayerControler playerctrl;
+
 
 
 
@@ -105,6 +108,7 @@ public class P2Niveau_PlayerControler : MonoBehaviour
         _MainCamera = GetComponentInChildren<Camera>();
         _sante = GetComponent<Sante>();
         _Weapon = Weapon.GetComponent<weaponDamage>();
+        playerctrl=GameObject.Find("Top/Characters/CyberSoldier").GetComponent<Niveau_PlayerControler>();
     }
 
     // Utile pour régler des valeurs aux objets
@@ -131,10 +135,12 @@ public class P2Niveau_PlayerControler : MonoBehaviour
     // Vérifie les entrées de commandes du joueur
     void Update()
     {
-        TextChange();
+        xp=playerctrl.xp;
         if (_sante.PV_actuels <= 0)
         {
             GameOver = true;
+            _Rb.velocity=new Vector3(0,0,0);
+            _Anim.SetFloat("MoveSpeed",0f);
         }
         if (isDashing)
         {
@@ -359,10 +365,7 @@ public class P2Niveau_PlayerControler : MonoBehaviour
             coll.gameObject.SetActive(false);
         }
     }
-    private void TextChange()
-    {
-        _Txt.text = xp.ToString();
-    }
+    
     void Attack_End()
     {
         _Weapon.damage_mode = false;
