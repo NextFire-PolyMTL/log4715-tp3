@@ -269,7 +269,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     {
         if (coll.gameObject.tag == "frag")
         {
-            _skillsManager.XP += 100;
+            SkillsManager.XP += 100;
             coll.gameObject.SetActive(false);
         }
 

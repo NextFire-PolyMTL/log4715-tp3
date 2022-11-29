@@ -81,7 +81,7 @@ public class Bouton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int nb = _skillManager.XP;
+        int nb = SkillsManager.XP;
         for (int i = 0; i < 10; i++)
         {
             if (bouton_list[i].interactable)

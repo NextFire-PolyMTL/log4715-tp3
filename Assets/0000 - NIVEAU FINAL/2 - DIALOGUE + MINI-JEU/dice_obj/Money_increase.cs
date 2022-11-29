@@ -16,6 +16,10 @@ public class Money_increase : MonoBehaviour
     void Start()
     {
         text1 = GetComponent<TMP_Text> ();
+        text1.text = SkillsManager.XP.ToString();
+        value = SkillsManager.XP;
+        previous_value = SkillsManager.XP;
+
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class Money_increase : MonoBehaviour
                 if( text1.text==null ) Debug.LogWarning($"You forgot to assign '{nameof(text1.text)}' field in the inspector",gameObject);
                 #endif
                 text1.text = previous_value.ToString();
+                SkillsManager.XP = previous_value;
                 yield return new WaitForSeconds(0.01F);
             } 
         }
@@ -49,6 +54,7 @@ public class Money_increase : MonoBehaviour
             {   
                 previous_value = previous_value + 1;
                 text1.text = previous_value.ToString();
+                SkillsManager.XP = previous_value;
                 yield return new WaitForSeconds(0.01F);
             } 
         } 

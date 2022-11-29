@@ -5307,7 +5307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8868545be49047588a988bf6d23aa1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XP: 0
   unlockedSkills: 00000000000000000000
   _txt: {fileID: 715346408}
   _txt2: {fileID: 1656467282}
@@ -29280,8 +29279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47527b2d5d0226a43a1c0f4eef03c3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text2: {fileID: 715346408}
-  money_value: 0
 --- !u!114 &1656467282
 MonoBehaviour:
   m_ObjectHideFlags: 0

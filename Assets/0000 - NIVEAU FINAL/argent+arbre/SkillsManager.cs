@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum Skill
 {
@@ -20,10 +21,12 @@ public enum Skill
 
 public class SkillsManager : MonoBehaviour
 {
-    public int XP = 0;
+    public static int XP = 0;
     public bool[] unlockedSkills = new bool[Enum.GetNames(typeof(Skill)).Length];
 
     [SerializeField] private Text _txt;
+
+    [SerializeField] private TMP_Text _txt2;
 
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class SkillsManager : MonoBehaviour
     void Update()
     {
         _txt.text = XP.ToString();
+        _txt2.text = XP.ToString();
     }
 
 

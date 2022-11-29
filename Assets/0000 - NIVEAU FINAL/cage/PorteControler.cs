@@ -27,7 +27,7 @@ public class PorteControler : MonoBehaviour
             _porte.Play("Ouverture", 0, 0.0f);
             gameObject.SetActive(false);
             _prisonnier.Play("Avance", 0, 0.0f);
-            _skillsManager.XP += 75;
+            SkillsManager.XP += 75;
             _successMessage.SetActive(true);
 
         }
