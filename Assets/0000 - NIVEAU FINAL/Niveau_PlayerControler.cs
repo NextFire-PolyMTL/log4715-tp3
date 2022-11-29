@@ -249,20 +249,52 @@ public class Niveau_PlayerControler : MonoBehaviour
             _anim.SetBool("Grounded", Grounded);
         }
 
-        if (coll.gameObject.tag == "trampoline") _isOnTrampoline = true;
-        if (coll.gameObject.tag == "mud") _isOnMud = true;
-        if (coll.gameObject.tag == "ice") _isOnIce = true;
+        if (coll.gameObject.tag == "trampoline")
+        {
+            _isOnTrampoline = true;
+        }
+        else
+        {
+            _isOnTrampoline = false;
+        }
 
-        if (_isOnIce) GetComponent<Collider>().material.dynamicFriction = 0;
+        if (coll.gameObject.tag == "mud")
+        {
+            _isOnMud = true;
+        }
+        else
+        {
+            _isOnMud = false;
+        }
+
+        if (coll.gameObject.tag == "ice")
+        {
+            _isOnIce = true;
+            // Debug.Log("ice floor");
+            GetComponent<Collider>().material.dynamicFriction = 0;
+            // Debug.Log(GetComponent<Collider>().material);
+        }
+        else
+        {
+            // Debug.Log("plus sur glace");
+            _isOnIce = false;
+        }
     }
+
     void OnCollisionExit(Collision coll)
     {
         // On s'assure de bien être en contact avec le sol
         if ((_movementManager.WhatIsGround & (1 << coll.gameObject.layer)) == 0) return;
 
-        if (coll.gameObject.tag == "trampoline") _isOnTrampoline = false;
-        if (coll.gameObject.tag == "mud") _isOnMud = false;
-        if (coll.gameObject.tag == "ice") _isOnIce = false;
+        if (coll.gameObject.tag == "mud")
+        {
+            _isOnMud = false;
+        }
+
+        if (coll.gameObject.tag == "ice")
+        {
+            _isOnIce = false;
+        }
     }
 
     void OnTriggerEnter(Collider coll)
