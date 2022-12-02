@@ -16,8 +16,8 @@ public class Niveau_PlayerControler : MonoBehaviour
 
     // Private Static
     private static readonly Vector3 s_flipRotation = new Vector3(0, 180, 0);
-    private static readonly Vector3 s_cameraPosition = new Vector3(8.333332f, 1.666666f, -0.7666666f);
-    private static readonly Vector3 s_inverseCameraPosition = new Vector3(-8.333332f, 1.666666f, 0.7666666f);
+    private static readonly Vector3 s_cameraPosition = new Vector3(8.333332f, 1.666666f, 8f);
+    private static readonly Vector3 s_inverseCameraPosition = new Vector3(-8.333332f, 1.666666f, -8f);
 
     // Position initiale du joueur si on relance la scène, string = nom de l'objet root
     private static Dictionary<string, Vector3> s_playerPos = new Dictionary<string, Vector3>();
