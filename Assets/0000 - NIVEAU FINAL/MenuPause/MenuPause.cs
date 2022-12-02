@@ -6,12 +6,20 @@ using UnityEngine;
 public class MenuPause : MonoBehaviour
 {
     [SerializeField] GameObject Menu;
+    private bool set=false;
     // Start is called before the first frame update
     
     void Update(){
         if (Input.GetKeyDown(KeyCode.Escape)){
-            Menu.SetActive(true);
-            Time.timeScale=0f;
+            set=!set;
+            Menu.SetActive(set);
+            if (set==true){
+                Time.timeScale=0f;
+            } else{
+                Time.timeScale=1f;
+            }
+
+            
         }
     }
     
