@@ -104,6 +104,6 @@ public class DiceScript : MonoBehaviour
     {
         DialogueScript.start_opening = true;
         Niveau_PlayerControler.StartOpening = true;
-        SceneManager.LoadScene("NIVEAU");
+        SceneManager.LoadScene("5 - Village Hub");
     }
 }

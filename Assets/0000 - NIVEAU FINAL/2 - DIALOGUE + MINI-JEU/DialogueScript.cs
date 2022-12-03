@@ -86,16 +86,16 @@ public class DialogueScript : MonoBehaviour
             text_marchand2.SetActive(false);
         }
 
-        else if (affiche_d_h && Input.GetKeyDown(KeyCode.Escape))
+        else if (affiche_d_h && Input.GetKeyDown(KeyCode.Space))
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            Niveau_PlayerControler.DialogueStop = false;
             image_dialogue_heros.SetActive(false);
             text_heros.SetActive(false);
             image_dialogue_marchand.SetActive(false);
             text_marchand.SetActive(false);
             text_marchand2.SetActive(false);
+            StartCoroutine(StopTime());
 
         }
 
@@ -103,12 +103,12 @@ public class DialogueScript : MonoBehaviour
         {
             source.PlayOneShot(clip_dialogue);
             affiche_d_h = false;
-            Niveau_PlayerControler.DialogueStop = false;
             image_dialogue_heros.SetActive(false);
             text_heros.SetActive(false);
             image_dialogue_marchand.SetActive(false);
             text_marchand.SetActive(false);
             text_marchand2.SetActive(false);
+            StartCoroutine(StopTime());
             CloseScene();
         }
 
@@ -147,5 +147,12 @@ public class DialogueScript : MonoBehaviour
     {
         DiceScript.start_opening = true;
         SceneManager.LoadScene("Dice-game");
+    }
+
+    IEnumerator StopTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Niveau_PlayerControler.DialogueStop = false;
+
     }
 }
