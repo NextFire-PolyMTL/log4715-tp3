@@ -24,6 +24,7 @@ public class Sante : MonoBehaviour
     [HideInInspector] public bool _piegeActive;
     private float time;
 
+
     public void OnAfterDeserialize()
     {
         PV_max = _PV_max;
@@ -37,6 +38,7 @@ public class Sante : MonoBehaviour
         _isOnLava = false;
         intervalle = 0;
 
+
         _piegeActive = false;
         time = 0;
         // Degats_Projectiles = 2;
@@ -47,7 +49,7 @@ public class Sante : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
 
         if (_isOnLava)
         {
@@ -90,6 +92,7 @@ public class Sante : MonoBehaviour
         if (time > 1)
         {
             _Eboul.SetActive(false);
+            _piegeActive = false;
         }
 
     }
