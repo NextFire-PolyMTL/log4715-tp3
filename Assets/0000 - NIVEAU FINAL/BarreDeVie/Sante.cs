@@ -13,6 +13,8 @@ public class Sante : MonoBehaviour
     public int Degats_Projectiles = 1;
     public int Degats_Lave = 1;
 
+    public static int set_degats = 0; // Pour utiliser la fonction Degats
+
     // Variables pour la lave
     //[SerializeField] LayerMask ThisFloorIsLava;
     [HideInInspector] public bool _isOnLava = false;
@@ -50,6 +52,12 @@ public class Sante : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+
+        if (set_degats != 0)
+        {
+            Degats(set_degats);
+            set_degats = 0;
+        }
 
         if (_isOnLava)
         {
