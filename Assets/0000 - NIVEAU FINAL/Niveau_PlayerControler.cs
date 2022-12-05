@@ -24,7 +24,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Orientation initiale du joueur si on relance la scène, string = nom de l'objet root
     private static Dictionary<string, bool> s_playerFlip = new Dictionary<string, bool>();
 
-    private static bool s_gameOver = false;
+    public static bool s_gameOver = false;
 
     // Serialized
     [Header("Shared")]
@@ -96,7 +96,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     {
 
         if (Sante.PV_actuels <= 0)
-        {
+        {   
             s_gameOver = true;
             _rb.velocity = new Vector3(0, 0, 0);
             _anim.SetFloat("MoveSpeed", 0f);
