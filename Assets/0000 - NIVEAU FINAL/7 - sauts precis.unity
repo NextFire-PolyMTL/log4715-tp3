@@ -3961,7 +3961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8868545be49047588a988bf6d23aa1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockedSkills: 01010101000000000000
+  unlockedSkills: 00000000000000000000
   _txt: {fileID: 715346408}
   _txt2: {fileID: 1656467282}
 --- !u!114 &309363330
