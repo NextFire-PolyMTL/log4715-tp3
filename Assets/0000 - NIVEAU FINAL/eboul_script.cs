@@ -13,6 +13,8 @@ public class eboul_script : MonoBehaviour
     private float time;
 
     private bool start_fall;
+    [SerializeField] float cadence=1.5f;
+    [SerializeField] float entree=1f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +39,11 @@ public class eboul_script : MonoBehaviour
     {   
         Debug.Log("Fall");
         _eboul.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(entree);
         _eboul.SetActive(false);
         _eboul.transform.position = eboul_pos;
         rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(cadence);
         start_fall = true;
     }
 }
