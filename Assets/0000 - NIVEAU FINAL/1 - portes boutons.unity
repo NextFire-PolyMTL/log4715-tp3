@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10860,7 +10860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028339253}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020000007, y: 0, z: 0.25451663}
+  m_LocalPosition: {x: -0.020000007, y: 0, z: 0.7}
   m_LocalScale: {x: 0.8556, y: 0.09999999, z: 1.30975}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10894,7 +10894,7 @@ CapsuleCollider:
   m_Radius: 0.25
   m_Height: 0.9
   m_Direction: 2
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0, z: 1}
 --- !u!23 &1028339257
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16825,6 +16825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1645038734}
   _eboul: {fileID: 0}
+  cadence: 1.5
+  entree: 1
 --- !u!114 &1645038748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16839,6 +16841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1645038734}
   _eboul: {fileID: 0}
+  cadence: 1.5
+  entree: 1
 --- !u!114 &1645038749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16853,6 +16857,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1645038734}
   _eboul: {fileID: 0}
+  cadence: 1.5
+  entree: 1
 --- !u!1 &1647467595
 GameObject:
   m_ObjectHideFlags: 0
