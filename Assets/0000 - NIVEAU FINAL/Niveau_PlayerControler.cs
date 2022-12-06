@@ -96,7 +96,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     {
 
         if (Sante.PV_actuels <= 0)
-        {   
+        {
             s_gameOver = true;
             _rb.velocity = new Vector3(0, 0, 0);
             _anim.SetFloat("MoveSpeed", 0f);
@@ -240,6 +240,8 @@ public class Niveau_PlayerControler : MonoBehaviour
     // Collision avec le sol
     void OnCollisionEnter(Collision coll)
     {
+        if (coll.gameObject.tag == "projectile") _sante.Degats(_sante.Degats_Projectiles);
+
         // On s'assure de bien être en contact avec le sol
         if ((_movementManager.WhatIsGround & (1 << coll.gameObject.layer)) == 0) return;
 
@@ -278,7 +280,6 @@ public class Niveau_PlayerControler : MonoBehaviour
         // TODO: bouger ça ailleurs
         if (coll.gameObject.layer == 9) _sante._isOnLava = true;
         if (coll.gameObject.layer == 10) _sante._piegeActive = true;
-        if (coll.gameObject.tag == "projectile") _sante.Degats(_sante.Degats_Projectiles);
     }
 
     void OnTriggerExit(Collider coll)
