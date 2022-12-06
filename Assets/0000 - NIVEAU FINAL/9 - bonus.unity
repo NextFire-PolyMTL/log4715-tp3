@@ -4048,6 +4048,8 @@ MonoBehaviour:
   gameover: {fileID: 330654212}
   deathScreen: {fileID: 1674238950}
   Fade: {fileID: 178138779}
+  hero: {fileID: 967482685}
+  shadow: {fileID: 575622940}
   Degats_Projectiles: 1
   Degats_Lave: 1
   _isOnLava: 0
