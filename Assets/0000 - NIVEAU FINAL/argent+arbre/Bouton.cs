@@ -10,6 +10,7 @@ public class Bouton : MonoBehaviour
     private List<GameObject> fleche_list;
     private List<GameObject> couts;
     private int[] couts_list;
+    [SerializeField] bool niv2=false;
 
     // Start is called before the first frame update
     void Awake()
@@ -145,14 +146,18 @@ public class Bouton : MonoBehaviour
             couleur.disabledColor = Color.green;
             bouton_list[1].colors = couleur;
 
-            fleche_list[3].SetActive(false);
-            fleche_list[4].SetActive(false);
+            
             //   bouton_list[1].disabledColor=Color.green;
-            if (_skillManager.unlockedSkills[2])
+            if (_skillManager.unlockedSkills[2] && niv2)
             {
                 bouton_list[3].interactable = true;
             }
-            bouton_list[4].interactable = true;
+            if (niv2){
+                bouton_list[4].interactable = true;
+                fleche_list[3].SetActive(false);
+                fleche_list[4].SetActive(false);
+            }
+            
             couts[1].SetActive(false);
             //coûts.RemoveAt(1);
         }
@@ -173,14 +178,17 @@ public class Bouton : MonoBehaviour
             couleur.disabledColor = Color.green;
             bouton_list[2].colors = couleur;
             //   bouton_list[2].disabledColor=Color.green;
-            if (_skillManager.unlockedSkills[1])
+            if (_skillManager.unlockedSkills[1] && niv2)
             {
                 bouton_list[3].interactable = true;
             }
-            bouton_list[5].interactable = true;
-
-            fleche_list[5].SetActive(false);
-            fleche_list[6].SetActive(false);
+            
+            if (niv2){
+                bouton_list[5].interactable = true;
+                fleche_list[5].SetActive(false);
+                fleche_list[6].SetActive(false);
+            }
+            
             couts[2].SetActive(false);
             //  coûts.RemoveAt(2);
         }
