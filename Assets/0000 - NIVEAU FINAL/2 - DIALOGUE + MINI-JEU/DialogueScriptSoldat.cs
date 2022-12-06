@@ -141,7 +141,7 @@ public class DialogueScriptSoldat : MonoBehaviour
 
         }
 
-        else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.N)) // Le joueur choisit 'n', K=mort 
+        else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.N)) // Le joueur choisit 'n' 
         {
             //source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
@@ -162,7 +162,7 @@ public class DialogueScriptSoldat : MonoBehaviour
             //CloseScene();
             StartCoroutine(FewTime());
             
-        }else if (affiche_d_h3 && Input.GetKeyDown(KeyCode.Space)) // Le joueur choisit 'm', K=mort 
+        }else if (affiche_d_h3 && Input.GetKeyDown(KeyCode.Space)) // Le joueur choisit 'n'
         {
             lance_mort=true;
             Niveau_PlayerControler.DialogueStop = true; 
@@ -195,6 +195,11 @@ public class DialogueScriptSoldat : MonoBehaviour
                 
                 
             }
+            else{
+                lance_mort=false;
+                lance_tourne=true;
+                _VisualCue.SetActive(false);
+            }
             StartCoroutine(StopTime());
             //CloseScene();
         } else if (affiche_d_h4 && Input.GetKeyDown(KeyCode.Y)){
@@ -210,7 +215,7 @@ public class DialogueScriptSoldat : MonoBehaviour
             text_soldat_v.SetActive(false);
             text_soldat_p.SetActive(false);
             image_dialogue_soldat.SetActive(false);
-            SceneManager.LoadScene("5 - Village Hub");
+            T_10_11.retourMenu=true;
             passe_par_fin=true;
         }
 
