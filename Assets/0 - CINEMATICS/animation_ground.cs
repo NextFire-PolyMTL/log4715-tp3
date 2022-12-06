@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class animation_ground : MonoBehaviour
 {   
@@ -70,8 +71,7 @@ public class animation_ground : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
+    {   
         if (affiche_text1)
         {   
             image_dialogue_heros.SetActive(true);
@@ -138,6 +138,7 @@ public class animation_ground : MonoBehaviour
         yield return new WaitForSeconds(1);
         Shadow_soldier.SetActive(true);
         Hero.SetActive(false);
+        Load_game.change_scene = true;
     }
 
     IEnumerator WaitforStart()
@@ -153,5 +154,6 @@ public class animation_ground : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         ok = true;
     }
+
 
 }
