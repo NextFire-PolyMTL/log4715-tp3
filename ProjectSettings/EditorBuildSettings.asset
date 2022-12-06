@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0000 - NIVEAU FINAL/6 - Introduction Dash.unity
     guid: f71beea1f4c71ce4e8f7053fcd6de9df
+  - enabled: 1
+    path: Assets/0000 - NIVEAU FINAL/11 - Village 2.unity
+    guid: 3028eeec7078e8442ba14fa9cd8b0dda
   m_configObjects: {}
