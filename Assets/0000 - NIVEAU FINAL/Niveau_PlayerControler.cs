@@ -116,7 +116,7 @@ public class Niveau_PlayerControler : MonoBehaviour
             FlipCharacter(horizontal);
             CheckJump();
 
-            if (Input.GetKeyDown(KeyCode.E) && _canDash)
+            if (Input.GetKeyDown(KeyCode.E) && _canDash && _skillsManager.unlockedSkills[(int)Skill.Skill1])
             {
                 StartCoroutine(Dash(horizontal));
             }
