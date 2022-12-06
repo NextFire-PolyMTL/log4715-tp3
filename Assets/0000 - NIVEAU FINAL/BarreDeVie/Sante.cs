@@ -8,7 +8,7 @@ public class Sante : MonoBehaviour
     //Variable pour le setup de la lifebar;
     [SerializeField] private int _PV_max = 10;
     public static int PV_max = 10;
-    public static int PV_actuels = PV_max;
+    public static int PV_actuels = 1;
     [SerializeField] private BarDeVie bar_de_vie;
     [SerializeField] private GameObject gameover;
     [SerializeField] private GameObject deathScreen;
@@ -45,7 +45,7 @@ public class Sante : MonoBehaviour
     public void OnAfterDeserialize()
     {
         PV_max = _PV_max;
-        PV_actuels = PV_max;
+        PV_actuels = 1;
     }
 
     void Awake()
@@ -59,7 +59,8 @@ public class Sante : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   Niveau_PlayerControler.DialogueStop = true;
+    {
+        Niveau_PlayerControler.DialogueStop = true;
         _animFade.Play("Out");
         //eboul=GetComponent<GameObject>();
         _isOnLava = false;
@@ -77,7 +78,7 @@ public class Sante : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         //Debug.Log("FPS : " + 1.0f / Time.deltaTime);
 
         if (set_degats != 0)
@@ -97,7 +98,7 @@ public class Sante : MonoBehaviour
 
         }
         if (PV_actuels <= 0 && first_death)
-        {   
+        {
             first_death = false;
             StartCoroutine(Death());//gameover.SetActive(true);
         }
@@ -141,7 +142,7 @@ public class Sante : MonoBehaviour
     }
 
     IEnumerator Death()
-    {   
+    {
         _animHero.Play("MeleeWarrior@Death01_A");
         _animShadow.Play("MeleeWarrior@Death01_A");
         gameover.SetActive(true);
@@ -157,11 +158,7 @@ public class Sante : MonoBehaviour
         //Scene scene = SceneManager.GetActiveScene();
         PV_actuels = PV_max;
         Niveau_PlayerControler.s_gameOver = false;
-        Scene scene = SceneManager.GetActiveScene(); 
+        Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-
-
-
-
     }
 }
