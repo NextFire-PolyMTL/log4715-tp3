@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4518,6 +4518,8 @@ MonoBehaviour:
   gameover: {fileID: 480883782}
   deathScreen: {fileID: 1980411959}
   Fade: {fileID: 1482536723}
+  hero: {fileID: 967482685}
+  shadow: {fileID: 1645038734}
   Degats_Projectiles: 1
   Degats_Lave: 1
   _isOnLava: 0
@@ -7204,6 +7206,7 @@ GameObject:
   - component: {fileID: 488386468}
   - component: {fileID: 488386467}
   - component: {fileID: 488386466}
+  - component: {fileID: 488386470}
   m_Layer: 8
   m_Name: btn1
   m_TagString: Untagged
@@ -7233,7 +7236,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488386464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f673af37f5a414120b157dd14c73f0f0, type: 3}
   m_Name: 
@@ -7305,6 +7308,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488386464}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &488386470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488386464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a31e3018f9fe0c468fa0bed57befc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ToggledObject: {fileID: 671631836}
 --- !u!1 &488973518
 GameObject:
   m_ObjectHideFlags: 0

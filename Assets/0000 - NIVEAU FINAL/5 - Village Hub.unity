@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2200,8 +2200,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.5
-  m_fontSizeBase: 2.5
+  m_fontSize: 2.8
+  m_fontSizeBase: 2.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2843,6 +2843,8 @@ MonoBehaviour:
   gameover: {fileID: 731893215}
   deathScreen: {fileID: 1137043425}
   Fade: {fileID: 1192608133}
+  hero: {fileID: 967482685}
+  shadow: {fileID: 967482685}
   Degats_Projectiles: 1
   Degats_Lave: 1
   _isOnLava: 0
