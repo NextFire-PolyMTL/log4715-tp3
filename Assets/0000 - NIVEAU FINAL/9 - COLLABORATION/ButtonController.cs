@@ -6,6 +6,7 @@ public class ButtonController : MonoBehaviour
 {
     [SerializeField]
     private GameObject _ToggledObject;
+    private bool active=true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +23,17 @@ public class ButtonController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Check if the collision is on top of the button
-        if (collision.contacts[0].normal.y < 0)
+        if (collision.contacts[0].normal.y < 0 || collision.contacts[0].normal.z!=0)
         {
-            _ToggledObject.SetActive(false);
+            active=!active;
+            _ToggledObject.SetActive(active);
             var renderer = transform.GetComponent<Renderer>();
-            renderer.material.color = Color.green;
+            if (active==false){
+                renderer.material.color = Color.green;
+            }else{
+                renderer.material.color = Color.red;
+            }
+            
         }
     }
 }
