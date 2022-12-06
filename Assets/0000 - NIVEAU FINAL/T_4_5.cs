@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class T_4_5 : MonoBehaviour
 {
     [SerializeField] private GameObject Fade;
-    public static bool coll_fin_haut = false;
-    public static bool coll_fin_bas = false;
     private Animator _animFade;
 
     private bool first_time = true;
@@ -20,8 +18,7 @@ public class T_4_5 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("bas : " + coll_fin_bas + ", haut : " + coll_fin_haut);
-        if (coll_fin_bas && coll_fin_haut && first_time)
+        if (Toggle_fin_bas.coll_fin_bas && Toggle_fin_haut.coll_fin_haut && first_time)
         {   
             first_time = false; // On ne rentre qu'un fois dans cette boucle
             StartCoroutine(Move_to_next());

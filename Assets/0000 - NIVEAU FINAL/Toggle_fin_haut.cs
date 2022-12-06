@@ -6,12 +6,13 @@ public class Toggle_fin_haut : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Niveau_PlayerControler _PlayerControler;
+    public static bool coll_fin_haut = false;
     // Start is called before the first frame update
     void OnTriggerEnter(Collider collider)
     {   
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            T_4_5.coll_fin_haut = true;
+            coll_fin_haut = true;
         }
     }
 
@@ -19,7 +20,7 @@ public class Toggle_fin_haut : MonoBehaviour
     {
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            T_4_5.coll_fin_haut = false;
+            coll_fin_haut = false;
         }
     }
 }
