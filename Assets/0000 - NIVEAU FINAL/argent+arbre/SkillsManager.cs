@@ -9,7 +9,7 @@ public enum Skill
 {
     DoubleSaut,
     Dash,
-    Skill2,
+    CAC,
     Skill3,
     Skill4,
     Skill5,
