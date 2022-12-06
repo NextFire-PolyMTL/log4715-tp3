@@ -5,12 +5,13 @@ using UnityEngine;
 public class Toggle_fin_bas : MonoBehaviour
 {
     [SerializeField] private Niveau_PlayerControler _PlayerControler;
+    public static bool coll_fin_bas = false;
     // Start is called before the first frame update
     void OnTriggerEnter(Collider collider)
     {   
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            T_4_5.coll_fin_bas = true;
+            coll_fin_bas = true;
         }
     }
 
@@ -18,7 +19,7 @@ public class Toggle_fin_bas : MonoBehaviour
     {
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            T_4_5.coll_fin_bas = false;
+            coll_fin_bas = false;
         }
     }
 }
