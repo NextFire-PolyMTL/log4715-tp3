@@ -8,7 +8,7 @@ public class Sante : MonoBehaviour
     //Variable pour le setup de la lifebar;
     [SerializeField] private int _PV_max = 10;
     public static int PV_max = 10;
-    public static int PV_actuels = 1;
+    public static int PV_actuels = PV_max;
     [SerializeField] private BarDeVie bar_de_vie;
     [SerializeField] private GameObject gameover;
     [SerializeField] private GameObject deathScreen;
@@ -45,7 +45,7 @@ public class Sante : MonoBehaviour
     public void OnAfterDeserialize()
     {
         PV_max = _PV_max;
-        PV_actuels = 1;
+        PV_actuels = PV_max;
     }
 
     void Awake()
