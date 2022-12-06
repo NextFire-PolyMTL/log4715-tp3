@@ -13,6 +13,8 @@ public class Sante : MonoBehaviour
     [SerializeField] private GameObject gameover;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject Fade;
+    [SerializeField] private GameObject hero;
+    [SerializeField] private GameObject shadow;
     public int Degats_Projectiles = 1;
     public int Degats_Lave = 1;
 
@@ -27,10 +29,15 @@ public class Sante : MonoBehaviour
     [SerializeField] private GameObject _Eboul;
     [SerializeField] private GameObject _Press;
     [HideInInspector] public bool _piegeActive;
+
     private float time;
     private Animator _animGameOver;
     private Animator _animDeathScreen;
     private Animator _animFade;
+
+    private Animator _animHero;
+
+    private Animator _animShadow;
 
     private bool first_death = true;
 
@@ -46,6 +53,8 @@ public class Sante : MonoBehaviour
         _animGameOver = gameover.GetComponent<Animator>();
         _animDeathScreen = deathScreen.GetComponent<Animator>();
         _animFade = Fade.GetComponent<Animator>();
+        _animHero = hero.GetComponent<Animator>();
+        _animShadow = shadow.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -133,6 +142,8 @@ public class Sante : MonoBehaviour
 
     IEnumerator Death()
     {   
+        _animHero.Play("MeleeWarrior@Death01_A");
+        _animShadow.Play("MeleeWarrior@Death01_A");
         gameover.SetActive(true);
         _animGameOver.Play("gameoverIn");
         yield return new WaitForSeconds(2f);

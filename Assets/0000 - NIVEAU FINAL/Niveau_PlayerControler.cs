@@ -37,6 +37,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     [SerializeField] private TrailRenderer _tr;
     [SerializeField] private AudioSource _source;
 
+
     // ----------------------------------------------------------------------------
 
     // GameObjects
@@ -116,7 +117,7 @@ public class Niveau_PlayerControler : MonoBehaviour
             FlipCharacter(horizontal);
             CheckJump();
 
-            if (Input.GetKeyDown(KeyCode.E) && _canDash)
+            if (Input.GetKeyDown(KeyCode.E) && _canDash && _skillsManager.unlockedSkills[(int)Skill.Dash])
             {
                 StartCoroutine(Dash(horizontal));
             }
