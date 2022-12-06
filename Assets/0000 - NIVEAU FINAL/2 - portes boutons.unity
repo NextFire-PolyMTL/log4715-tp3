@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1594,7 +1594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166946531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.37, z: -18.508}
+  m_LocalPosition: {x: 0.04, y: 0.254, z: -18.549}
   m_LocalScale: {x: 2, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3303,6 +3303,7 @@ MonoBehaviour:
   unlockedSkills: 00000000000000000000
   _txt: {fileID: 715346408}
   _txt2: {fileID: 1656467282}
+  set_arbre: 0
 --- !u!114 &309363330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3340,6 +3341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HUD: {fileID: 307668193}
   _Arbre: {fileID: 1322086241}
+  SkillsManagerh: {fileID: 309363329}
 --- !u!114 &309363332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12719,7 +12721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174933802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.78, z: -29.61}
+  m_LocalPosition: {x: 0, y: 1.727, z: -29.396}
   m_LocalScale: {x: 2, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

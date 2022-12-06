@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5357,6 +5357,7 @@ MonoBehaviour:
   unlockedSkills: 00000000000000000000
   _txt: {fileID: 715346408}
   _txt2: {fileID: 1656467282}
+  set_arbre: 0
 --- !u!114 &309363330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5394,6 +5395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HUD: {fileID: 307668193}
   _Arbre: {fileID: 1322086241}
+  SkillsManagerh: {fileID: 309363329}
 --- !u!114 &309363332
 MonoBehaviour:
   m_ObjectHideFlags: 0
