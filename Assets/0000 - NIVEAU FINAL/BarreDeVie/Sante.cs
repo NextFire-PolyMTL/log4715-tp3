@@ -69,7 +69,7 @@ public class Sante : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        Debug.Log("FPS : " + 1.0f / Time.deltaTime);
+        //Debug.Log("FPS : " + 1.0f / Time.deltaTime);
 
         if (set_degats != 0)
         {
