@@ -3187,8 +3187,8 @@ MonoBehaviour:
   gameover: {fileID: 672914307}
   deathScreen: {fileID: 878307960}
   Fade: {fileID: 1041008485}
-  hero: {fileID: 0}
-  shadow: {fileID: 0}
+  hero: {fileID: 967482685}
+  shadow: {fileID: 1645038734}
   Degats_Projectiles: 1
   Degats_Lave: 1
   _isOnLava: 0
@@ -4158,7 +4158,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113432153}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
