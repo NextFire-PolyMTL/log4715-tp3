@@ -155,7 +155,6 @@ public class Sante : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameover.SetActive(false);
         yield return new WaitForSeconds(0.2f);
-        //Scene scene = SceneManager.GetActiveScene();
         PV_actuels = PV_max;
         Niveau_PlayerControler.s_gameOver = false;
         Scene scene = SceneManager.GetActiveScene();
