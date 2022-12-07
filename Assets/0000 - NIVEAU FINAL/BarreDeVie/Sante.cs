@@ -30,6 +30,8 @@ public class Sante : MonoBehaviour
     [SerializeField] private GameObject _Press;
     [HideInInspector] public bool _piegeActive;
 
+    public static bool niveau_diff = false; // false = facile, true = difficile
+
     private float time;
     private Animator _animGameOver;
     private Animator _animDeathScreen;
@@ -40,6 +42,7 @@ public class Sante : MonoBehaviour
     private Animator _animShadow;
 
     private bool first_death = true;
+
 
 
     public void OnAfterDeserialize()
@@ -61,7 +64,10 @@ public class Sante : MonoBehaviour
     void Start()
     {
         Niveau_PlayerControler.DialogueStop = true;
-        _animFade.Play("Out");
+        if (!Niveau_PlayerControler.StartOpening)
+        {
+            _animFade.Play("Out");
+        }
         //eboul=GetComponent<GameObject>();
         _isOnLava = false;
         intervalle = 0;
@@ -158,6 +164,20 @@ public class Sante : MonoBehaviour
         PV_actuels = PV_max;
         Niveau_PlayerControler.s_gameOver = false;
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        if (niveau_diff == false)
+        {
+            SceneManager.LoadScene(scene.name);
+        }
+        else
+        {
+            if (char.GetNumericValue(scene.name[0]) < 5)
+            {
+                SceneManager.LoadScene("1 - previllage");
+            }
+            else 
+            {
+                SceneManager.LoadScene("5 - Village Hub");
+            }
+        }
     }
-}
+}   
