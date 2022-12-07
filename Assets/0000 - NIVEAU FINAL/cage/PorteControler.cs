@@ -7,6 +7,7 @@ public class PorteControler : MonoBehaviour
     [SerializeField] private Animator _porte;
     [SerializeField] private Animator _prisonnier;
     [SerializeField] private SkillsManager _skillsManager;
+    [SerializeField] private GameObject feu_d_artif;
     private bool refaire=true;
     //[SerializeField] private GameObject _successMessage;
      private Animator garde1;
@@ -56,6 +57,7 @@ public class PorteControler : MonoBehaviour
             garde3.Play("Danse",0,0.0f);
             garde4.Play("Danse",0,0.0f);
             _prisonnier.Play("Danse",0,0.0f);
+            feu_d_artif.SetActive(true);
            win.SetActive(true);
             
             win.GetComponent<Animator>().Play("gameoverIn");
@@ -67,7 +69,7 @@ public class PorteControler : MonoBehaviour
         
     }
     IEnumerator waitabit(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         fade.SetActive(true);
         fade.GetComponent<Animator>().Play("death_fade_in");
        
