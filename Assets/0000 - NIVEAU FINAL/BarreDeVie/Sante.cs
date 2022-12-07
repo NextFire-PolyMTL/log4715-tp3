@@ -169,8 +169,12 @@ public class Sante : MonoBehaviour
             SceneManager.LoadScene(scene.name);
         }
         else
-        {
-            if (char.GetNumericValue(scene.name[0]) < 5)
+        {   
+            if (scene.name == "10 - cage et fin")
+            {
+                SceneManager.LoadScene("5 - Village Hub");
+            }
+            else if (char.GetNumericValue(scene.name[0]) < 5)
             {
                 SceneManager.LoadScene("1 - previllage");
             }
