@@ -13,12 +13,12 @@ public class projectileBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");
-        Debug.Log(target);
-        
+        // Debug.Log("start");
+        // Debug.Log(target);
+
         _Rb = GetComponent<Rigidbody>();
         _Tr = GetComponent<Transform>();
-        
+
         muzzle_position=_Tr.position;
         target_direction= target-muzzle_position;
         target_direction=Vector3.Normalize(target_direction);
@@ -37,12 +37,12 @@ public class projectileBehavior : MonoBehaviour
     void Update()
     {
         //Debug.Log(target_direction);
-       _Tr.position += target_direction*Time.deltaTime*10f; 
+       _Tr.position += target_direction*Time.deltaTime*10f;
     }
 
     void OnCollisionEnter(Collision coll){
-        Debug.Log("Collision");
-        
+        // Debug.Log("Collision");
+
        // if(coll.gameObject.tag=="Hero"){
        //     coll.gameObject.GetComponent<PlayerControler>().life=0;
             //Destroy(coll.gameObject);

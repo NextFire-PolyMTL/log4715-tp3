@@ -126,9 +126,9 @@ public class enemyMove : MonoBehaviour
 
     /*
     void OnTriggerEnter(Collider vision){
-        Debug.Log(vision.gameObject.name=="MaleFree1");
+        // Debug.Log(vision.gameObject.name=="MaleFree1");
         if(vision.gameObject.name=="MaleFree1"){
-            Debug.Log("alert");
+            // Debug.Log("alert");
             _Anim.SetBool("Alert", true);
         }
 
@@ -164,7 +164,7 @@ public class enemyMove : MonoBehaviour
     /*
     void OnTriggerExit(Collider vision){
         if(vision.gameObject.name=="MaleFree1"){
-            Debug.Log("ouf");
+            // Debug.Log("ouf");
             _Anim.SetBool("Alert", false);
             _Anim.SetBool("Target", false);
         }

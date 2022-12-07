@@ -23,20 +23,20 @@ public class weaponDamage : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision vision){
-        Debug.Log("enemy:");
-        Debug.Log(vision.gameObject.tag);
+        // Debug.Log("enemy:");
+        // Debug.Log(vision.gameObject.tag);
         if(vision.gameObject.tag=="Enemy"){
-            Debug.Log("touché!! ah ah ah");
+            // Debug.Log("touché!! ah ah ah");
             GameObject.Destroy(vision.gameObject);
         }
-        
+
     }
     void OnTriggerEnter(Collider vision){
         if(vision.gameObject.tag=="Enemy" && damage_mode && gotuer){
-            Debug.Log("touché!! ah ah ah");
+            // Debug.Log("touché!! ah ah ah");
             vision.gameObject.GetComponent<Animator>().CrossFade("Die",0.1f);
             GameObject.Destroy(vision.gameObject,1.10f);
         }
-        
+
     }
 }
