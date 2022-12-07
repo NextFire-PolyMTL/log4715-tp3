@@ -18775,6 +18775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControler: {fileID: 967482693}
+  Boule_Energie: {fileID: 1887931045}
 --- !u!114 &1688970320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18788,6 +18789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControler: {fileID: 967482693}
+  Boule_Energie: {fileID: 0}
 --- !u!23 &1688970321
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18863,7 +18865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3765d5f9f1565fe4b98cae9660787666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fade: {fileID: 1192608133}
+  Fade: {fileID: 1887931045}
 --- !u!1 &1696018291
 GameObject:
   m_ObjectHideFlags: 0
@@ -20698,6 +20700,12 @@ PrefabInstance:
 --- !u!4 &1887931044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 200e650fba6c8492b87e96e4bc273510,
+    type: 3}
+  m_PrefabInstance: {fileID: 1887931043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887931045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 200e650fba6c8492b87e96e4bc273510,
     type: 3}
   m_PrefabInstance: {fileID: 1887931043}
   m_PrefabAsset: {fileID: 0}

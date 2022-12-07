@@ -2465,6 +2465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControler: {fileID: 967482693}
+  Boule_Energie: {fileID: 1907776115}
 --- !u!1 &169093127
 GameObject:
   m_ObjectHideFlags: 0
@@ -17872,6 +17873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControler: {fileID: 1645038745}
+  Boule_Energie: {fileID: 1730060623}
 --- !u!4 &1176003555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010603562546, guid: d0c0b49979d372942ae5a964d9364111,
@@ -21183,8 +21185,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294913280
-  m_fontColor: {r: 0, g: 0.17748213, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -24032,7 +24034,6 @@ MonoBehaviour:
   _porte: {fileID: 13298962}
   _prisonnier: {fileID: 1776916295}
   _skillsManager: {fileID: 309363329}
-  _successMessage: {fileID: 1000965081}
 --- !u!65 &1600428739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24103,7 +24104,6 @@ MonoBehaviour:
   _porte: {fileID: 13298962}
   _prisonnier: {fileID: 1776916295}
   _skillsManager: {fileID: 309363329}
-  _successMessage: {fileID: 1000965081}
 --- !u!65 &1603932487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26361,6 +26361,12 @@ PrefabInstance:
 --- !u!4 &1730060622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 200e650fba6c8492b87e96e4bc273510,
+    type: 3}
+  m_PrefabInstance: {fileID: 1730060621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1730060623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 200e650fba6c8492b87e96e4bc273510,
     type: 3}
   m_PrefabInstance: {fileID: 1730060621}
   m_PrefabAsset: {fileID: 0}
@@ -28804,6 +28810,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+--- !u!1 &1907776115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 200e650fba6c8492b87e96e4bc273510,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907776114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1908667333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4345848988962992, guid: ad68d2f6e3b05412fbf32943c104dbff,
