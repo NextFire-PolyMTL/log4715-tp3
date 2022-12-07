@@ -7,6 +7,7 @@ public class PorteControler : MonoBehaviour
     [SerializeField] private Animator _porte;
     [SerializeField] private Animator _prisonnier;
     [SerializeField] private SkillsManager _skillsManager;
+    private bool refaire=true;
     //[SerializeField] private GameObject _successMessage;
      private Animator garde1;
      private Animator garde2;
@@ -34,27 +35,22 @@ public class PorteControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "Hero")
+        if (coll.gameObject.tag == "Hero" && refaire)
         {
             _porte.Play("Ouverture", 0, 0.0f);
+            refaire=false;
             gameObject.SetActive(false);
             //_prisonnier.Play("Avance", 0, 0.0f);
             
-            SkillsManager.XP += 75;
+            //SkillsManager.XP += 200;
             //_successMessage.SetActive(true);
-
-        }
-        if (coll.gameObject.tag == "Prisoner")
-        {
-            _porte.Play("Fermeture", 0, 0.0f);
             garde1.Play("Danse",0,0.0f);
             garde2.Play("Danse",0,0.0f);
             garde3.Play("Danse",0,0.0f);
             garde4.Play("Danse",0,0.0f);
             _prisonnier.Play("Danse",0,0.0f);
-            //prisonnier.Play("idle");
-            gameObject.SetActive(false);
-            //_successMessage.SetActive(false);
+
         }
+        
     }
 }

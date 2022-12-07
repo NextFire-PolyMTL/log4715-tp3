@@ -76,7 +76,7 @@ public class enemyMove2 : MonoBehaviour
             changement=false;
         }
         lance_tourne=scripts.GetComponent<DialogueScriptSoldat>().lance_tourne;
-        
+
     }
 
     // Gère le mouvement horizontal
@@ -144,9 +144,9 @@ public class enemyMove2 : MonoBehaviour
 
     /*
     void OnTriggerEnter(Collider vision){
-        Debug.Log(vision.gameObject.name=="MaleFree1");
+        // Debug.Log(vision.gameObject.name=="MaleFree1");
         if(vision.gameObject.name=="MaleFree1"){
-            Debug.Log("alert");
+            // Debug.Log("alert");
             _Anim.SetBool("Alert", true);
         }
 
@@ -182,7 +182,7 @@ public class enemyMove2 : MonoBehaviour
     /*
     void OnTriggerExit(Collider vision){
         if(vision.gameObject.name=="MaleFree1"){
-            Debug.Log("ouf");
+            // Debug.Log("ouf");
             _Anim.SetBool("Alert", false);
             _Anim.SetBool("Target", false);
         }

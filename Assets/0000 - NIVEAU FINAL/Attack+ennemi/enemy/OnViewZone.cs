@@ -18,21 +18,21 @@ public class OnViewZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void OnTriggerEnter(Collider vision){
-        //// dhsvuhvf(vision.gameObject.name=="MaleFree1");
+        // Debug.Log(vision.gameObject.name=="MaleFree1");
         if(vision.gameObject.tag=="Hero"){
-            // dhsvuhvf("alert");
+            // Debug.Log("alert");
             _Anim.SetBool("Alert", true);
         }
-        
+
     }
     void OnTriggerExit(Collider vision){
         if(vision.gameObject.tag=="Hero"){
-            // dhsvuhvf("ouf");
+            // Debug.Log("ouf");
             _Anim.SetBool("Alert", false);
         }
-        
+
     }
 }

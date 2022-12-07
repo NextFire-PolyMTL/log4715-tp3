@@ -18,7 +18,7 @@ public class eboul_script : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         //_eboul.SetActive(false);
         eboul_pos = _eboul.transform.position;
         start_fall = true;
@@ -29,15 +29,15 @@ public class eboul_script : MonoBehaviour
     void Update()
     {
         if(start_fall)
-        {   
+        {
             start_fall = false;
             StartCoroutine(Fall());
         }
     }
 
     IEnumerator Fall()
-    {   
-        Debug.Log("Fall");
+    {
+        // Debug.Log("Fall");
         _eboul.SetActive(true);
         yield return new WaitForSeconds(entree);
         _eboul.SetActive(false);
