@@ -75,7 +75,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         _chargementDash.text = "";
 
         if (Niveau_PlayerControler.StartOpening)
-        {   
+        {
             Niveau_PlayerControler.StartOpening = false;
             _rb.position = s_playerPos[transform.root.name];
             if (s_playerFlip[transform.root.name])
@@ -123,7 +123,7 @@ public class Niveau_PlayerControler : MonoBehaviour
                 StartCoroutine(Dash(horizontal));
             }
 
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Attack") && _skillsManager.unlockedSkills[(int)Skill.CAC])
             {
                 _weapon.damage_mode = true;
                 _anim.CrossFade("Attack", 0.1f);
@@ -272,7 +272,7 @@ public class Niveau_PlayerControler : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider coll)
-    {   
+    {
         if (coll.gameObject.tag == "projectile") _sante.Degats(_sante.Degats_Projectiles);
         if (coll.gameObject.tag == "frag")
         {
