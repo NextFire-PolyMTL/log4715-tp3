@@ -61,7 +61,10 @@ public class Sante : MonoBehaviour
     void Start()
     {
         Niveau_PlayerControler.DialogueStop = true;
-        _animFade.Play("Out");
+        if (!Niveau_PlayerControler.StartOpening)
+        {
+            _animFade.Play("Out");
+        }
         //eboul=GetComponent<GameObject>();
         _isOnLava = false;
         intervalle = 0;

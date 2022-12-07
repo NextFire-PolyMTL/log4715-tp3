@@ -7046,28 +7046,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 575622938}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &575622941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575622940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b270ca276ac00f7499e2f20d2d68db1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _PlayerControler: {fileID: 967482693}
-  _VisualCue: {fileID: 1034342397}
-  image_dialogue_marchand: {fileID: 2086929457}
-  image_dialogue_heros: {fileID: 94855436}
-  text_marchand: {fileID: 147264960}
-  text_marchand2: {fileID: 930732129}
-  text_heros: {fileID: 1760030395}
-  fader: {fileID: 378552551}
-  source: {fileID: 498825422}
-  clip_dialogue: {fileID: 8300000, guid: 4c9871aab96099b4f8e25706f178ac1d, type: 3}
 --- !u!54 &575622942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7097,6 +7075,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 200, y: 150, z: 300}
   m_Center: {x: 0, y: 50, z: 0}
+--- !u!114 &575622945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575622940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1144562e8277a34b9be8fab30baf670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PlayerControler: {fileID: 967482693}
+  _VisualCue: {fileID: 1034342397}
+  image_dialogue_marchand: {fileID: 2086929457}
+  image_dialogue_heros: {fileID: 94855436}
+  text_marchand: {fileID: 147264960}
+  text_marchand2: {fileID: 930732129}
+  text_heros: {fileID: 1760030395}
+  fader: {fileID: 378552551}
+  source: {fileID: 498825422}
+  clip_dialogue: {fileID: 8300000, guid: 4c9871aab96099b4f8e25706f178ac1d, type: 3}
 --- !u!1 &577827122
 GameObject:
   m_ObjectHideFlags: 0

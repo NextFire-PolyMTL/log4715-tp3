@@ -75,7 +75,8 @@ public class Niveau_PlayerControler : MonoBehaviour
         _chargementDash.text = "";
 
         if (Niveau_PlayerControler.StartOpening)
-        {
+        {   
+            Niveau_PlayerControler.StartOpening = false;
             _rb.position = s_playerPos[transform.root.name];
             if (s_playerFlip[transform.root.name])
             {
