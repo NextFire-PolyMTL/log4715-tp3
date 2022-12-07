@@ -15,7 +15,7 @@ public class PorteControler : MonoBehaviour
      private Animator garde4;
     //[SerializeField] private GameObject p;
     private GameObject win;
-    [SerializeField] private GameObject fade;
+    private GameObject fade;
     
     
 
@@ -27,14 +27,16 @@ public class PorteControler : MonoBehaviour
         garde3=GameObject.Find("Top/Characters/garde3").GetComponent<Animator>();
         garde4=GameObject.Find("Top/Characters/garde1 (1)").GetComponent<Animator>();
         win=GameObject.Find("HUD/Canvas/Win");//.GetComponent<Animator>();
-        //fade=GameObject.Find("HUD/Canvas/death_fade");//.GetComponent<Animator>();
+        fade=GameObject.Find("HUD/Canvas/victory_fade");//.GetComponent<Animator>();
+        _prisonnier.Play("idle");
+        
     
 
     }
 
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -42,6 +44,7 @@ public class PorteControler : MonoBehaviour
         if (coll.gameObject.tag == "Hero" && refaire)
         {
             _porte.Play("Ouverture", 0, 0.0f);
+        
             refaire=false;
             //gameObject.SetActive(false);
             //_prisonnier.Play("Avance", 0, 0.0f);
