@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class T_5_10 : MonoBehaviour
+public class T_8_9 : MonoBehaviour
 {
     [SerializeField] private GameObject Fade;
     private Animator _animFade;
@@ -29,7 +29,7 @@ public class T_5_10 : MonoBehaviour
     {
         _animFade.Play("In");
         yield return new WaitForSeconds(1.1f);
-        SceneManager.LoadScene("10 - cage et fin");
+        SceneManager.LoadScene("9 - bonus");
     }
 
 

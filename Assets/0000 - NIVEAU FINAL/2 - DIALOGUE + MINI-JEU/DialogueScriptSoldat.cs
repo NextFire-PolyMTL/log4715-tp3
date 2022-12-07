@@ -33,6 +33,12 @@ public class DialogueScriptSoldat : MonoBehaviour
     [SerializeField]
     GameObject Shared;
 
+    [SerializeField]
+    AudioSource source;
+
+    [SerializeField]
+    AudioClip clip_dialogue;
+
     //[SerializeField]
     //RectTransform fader;
 
@@ -85,7 +91,7 @@ public class DialogueScriptSoldat : MonoBehaviour
 
         if (begin_dialogue && Input.GetKeyDown(KeyCode.I)) // Phase 1 dialogue : le soldat apostrophe le héro
         {
-            //source.PlayOneShot(clip_dialogue);
+            source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; // On gèle les mouvements du joueur
             affiche_d_m = true;
             affiche_d_h = false;
@@ -104,7 +110,7 @@ public class DialogueScriptSoldat : MonoBehaviour
 
         else if (affiche_d_m && Input.GetKeyDown(KeyCode.Space)) // Phase 2 dialogue : le joueur répond 
         {
-            //source.PlayOneShot(clip_dialogue);
+            source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_m = false;
             affiche_d_h = false;
@@ -123,7 +129,7 @@ public class DialogueScriptSoldat : MonoBehaviour
 
         else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.Space))
         {
-            //source.PlayOneShot(clip_dialogue);
+            source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_h = false;
             affiche_d_h2=true;
@@ -143,7 +149,7 @@ public class DialogueScriptSoldat : MonoBehaviour
 
         else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.N)) // Le joueur choisit 'n' 
         {
-            //source.PlayOneShot(clip_dialogue);
+            source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_h = false;
             affiche_d_h2=false;
@@ -163,7 +169,8 @@ public class DialogueScriptSoldat : MonoBehaviour
             StartCoroutine(FewTime());
             
         }else if (affiche_d_h3 && Input.GetKeyDown(KeyCode.Space)) // Le joueur choisit 'n'
-        {
+        {   
+            source.PlayOneShot(clip_dialogue);
             lance_mort=true;
             Niveau_PlayerControler.DialogueStop = true; 
             lance_tourne=false;
@@ -172,7 +179,7 @@ public class DialogueScriptSoldat : MonoBehaviour
         }
         else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.Y)) // Le joueur choisit 'y', v=vie hihi
         {
-            //source.PlayOneShot(clip_dialogue);
+            source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_h = false;
             affiche_d_h2=false;
@@ -198,11 +205,12 @@ public class DialogueScriptSoldat : MonoBehaviour
             else{
                 lance_mort=false;
                 lance_tourne=true;
-                _VisualCue.SetActive(false);
+                Destroy(_VisualCue);
             }
             StartCoroutine(StopTime());
             //CloseScene();
         } else if (affiche_d_h4 && Input.GetKeyDown(KeyCode.Y)){
+            source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = false; 
             affiche_d_h =false; 
             affiche_d_h2=false;

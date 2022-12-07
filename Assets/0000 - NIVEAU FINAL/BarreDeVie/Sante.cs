@@ -65,7 +65,7 @@ public class Sante : MonoBehaviour
         //eboul=GetComponent<GameObject>();
         _isOnLava = false;
         intervalle = 0;
-
+        deathScreen.SetActive(false);
 
         _piegeActive = false;
         time = 0;
