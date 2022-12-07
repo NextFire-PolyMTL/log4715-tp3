@@ -59,8 +59,12 @@ public class DialogueScriptSoldat : MonoBehaviour
     private bool begin_dialogue = false;
     public static bool start_opening = false;
     private bool mort=false;
+    private bool affiche_d_h22=false;
 
     public bool passe_par_fin=false; // Pour retour au village, savoir s'il est passé par la fin
+
+    private GameObject viewzone;
+    private GameObject targetzone;
 
 
 
@@ -83,6 +87,8 @@ public class DialogueScriptSoldat : MonoBehaviour
       //  }
         _VisualCue.SetActive(false);
         Shared=GameObject.Find("Shared");
+        viewzone=GameObject.Find("Top/Characters/garde1/viewZone");
+        targetzone=GameObject.Find("Top/Characters/garde1/targetZone");
     }
 
     // Update is called once per frame
@@ -96,6 +102,7 @@ public class DialogueScriptSoldat : MonoBehaviour
             affiche_d_m = true;
             affiche_d_h = false;
             affiche_d_h2=false;
+            affiche_d_h22=false;
             affiche_d_h3=false;
             affiche_d_h4=false;
             image_dialogue_soldat.SetActive(true);
@@ -114,7 +121,8 @@ public class DialogueScriptSoldat : MonoBehaviour
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_m = false;
             affiche_d_h = false;
-            affiche_d_h2=true;
+            affiche_d_h2=false;
+            affiche_d_h22=true;
             affiche_d_h3=false;
             affiche_d_h4=false;
             image_dialogue_heros.SetActive(true);
@@ -132,7 +140,8 @@ public class DialogueScriptSoldat : MonoBehaviour
             source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_h = false;
-            affiche_d_h2=true;
+            affiche_d_h2=false;
+            affiche_d_h22=true;
             affiche_d_h3=false;
             affiche_d_h4=false;
             image_dialogue_heros.SetActive(false);
@@ -147,12 +156,13 @@ public class DialogueScriptSoldat : MonoBehaviour
 
         }
 
-        else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.N)) // Le joueur choisit 'n' 
+        else if (affiche_d_h22 && Input.GetKeyDown(KeyCode.N)) // Le joueur choisit 'n' 
         {
             source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_h = false;
             affiche_d_h2=false;
+            affiche_d_h22=false;
             affiche_d_h3=true;
             affiche_d_h4=false;
             image_dialogue_heros.SetActive(false);
@@ -168,7 +178,7 @@ public class DialogueScriptSoldat : MonoBehaviour
             //CloseScene();
             StartCoroutine(FewTime());
             
-        }else if (affiche_d_h3 && Input.GetKeyDown(KeyCode.Space)) // Le joueur choisit 'n'
+        }else if (affiche_d_h3 && Input.GetKeyDown(KeyCode.Space)) // Le joueur choisit 'n' (suite et mort)
         {   
             source.PlayOneShot(clip_dialogue);
             lance_mort=true;
@@ -177,12 +187,13 @@ public class DialogueScriptSoldat : MonoBehaviour
             text_soldat_m.SetActive(false);
             image_dialogue_soldat.SetActive(false);
         }
-        else if (affiche_d_h2 && Input.GetKeyDown(KeyCode.Y)) // Le joueur choisit 'y', v=vie hihi
+        else if (affiche_d_h22 && Input.GetKeyDown(KeyCode.Y)) // Le joueur choisit 'y'
         {
             source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             affiche_d_h = false;
             affiche_d_h2=false;
+            affiche_d_h22=false;
             affiche_d_h3=false;
             affiche_d_h4=false;
             image_dialogue_heros.SetActive(false);
@@ -195,7 +206,6 @@ public class DialogueScriptSoldat : MonoBehaviour
             
             bool pasAssez = Shared.GetComponent<SkillsManager>().EnleverXP(700);
             if (pasAssez==false){
-                
                 text_soldat_p.SetActive(true);
                 image_dialogue_soldat.SetActive(true);
                 affiche_d_h4=true;
@@ -206,12 +216,16 @@ public class DialogueScriptSoldat : MonoBehaviour
                 lance_mort=false;
                 lance_tourne=true;
                 Destroy(_VisualCue);
+                viewzone.SetActive(false);
+                targetzone.SetActive(false);
+                Niveau_PlayerControler.DialogueStop = false; 
             }
-            StartCoroutine(StopTime());
+            //StartCoroutine(StopTime());
             //CloseScene();
         } else if (affiche_d_h4 && Input.GetKeyDown(KeyCode.Y)){
             source.PlayOneShot(clip_dialogue);
-            Niveau_PlayerControler.DialogueStop = false; 
+            Niveau_PlayerControler.DialogueStop = true; 
+            
             affiche_d_h =false; 
             affiche_d_h2=false;
             affiche_d_h3=false;
