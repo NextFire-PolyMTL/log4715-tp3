@@ -65,7 +65,7 @@ public class Bouton : MonoBehaviour
 
         couts.Add(GameObject.Find("Arbre/Canvas/Boutons/Comp9/niv10"));
 
-        couts_list = new int[] { 130, 200, 200, 250, 340, 340, 400, 470, 470, 620 };
+        couts_list = new int[] { 100, 250, 250, 300, 340, 340, 400, 470, 470, 620 };
     }
 
     void Start()

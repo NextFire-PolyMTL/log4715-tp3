@@ -43,6 +43,8 @@ public class Sante : MonoBehaviour
 
     private bool first_death = true;
 
+    public static int xp_tableau = 0;
+
 
 
     public void OnAfterDeserialize()
@@ -62,7 +64,8 @@ public class Sante : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        xp_tableau = 0;
         Niveau_PlayerControler.DialogueStop = true;
         if (!Niveau_PlayerControler.StartOpening)
         {
@@ -148,7 +151,7 @@ public class Sante : MonoBehaviour
     }
 
     IEnumerator Death()
-    {
+    {   
         _animHero.Play("MeleeWarrior@Death01_A");
         _animShadow.Play("MeleeWarrior@Death01_A");
         gameover.SetActive(true);
@@ -163,6 +166,8 @@ public class Sante : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         PV_actuels = PV_max;
         Niveau_PlayerControler.s_gameOver = false;
+        SkillsManager.XP = SkillsManager.XP - xp_tableau;
+        xp_tableau = 0;
         Scene scene = SceneManager.GetActiveScene();
         if (niveau_diff == false)
         {

@@ -55,7 +55,7 @@ public class Money_increase : MonoBehaviour
                 previous_value = previous_value + 1;
                 text1.text = previous_value.ToString();
                 SkillsManager.XP = previous_value;
-                yield return new WaitForSeconds(0.01F);
+                yield return new WaitForSeconds(0.001F);
             } 
         } 
     }

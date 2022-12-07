@@ -275,7 +275,8 @@ public class Niveau_PlayerControler : MonoBehaviour
     {
         if (coll.gameObject.tag == "projectile") _sante.Degats(_sante.Degats_Projectiles);
         if (coll.gameObject.tag == "frag")
-        {
+        {   
+            Sante.xp_tableau = Sante.xp_tableau + 100;
             SkillsManager.XP += 100;
             coll.gameObject.SetActive(false);
         }
