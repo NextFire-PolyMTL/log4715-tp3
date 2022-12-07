@@ -841,6 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControler: {fileID: 967482693}
+  Boule_Energie: {fileID: 1259473215}
 --- !u!23 &84459862
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6580,6 +6581,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 459223796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &459223798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 200e650fba6c8492b87e96e4bc273510,
+    type: 3}
+  m_PrefabInstance: {fileID: 459223796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &460475242
 GameObject:
   m_ObjectHideFlags: 0
@@ -7740,6 +7747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerControler: {fileID: 1645038745}
+  Boule_Energie: {fileID: 459223798}
 --- !u!23 &554041743
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19653,6 +19661,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1259473213}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1259473215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 200e650fba6c8492b87e96e4bc273510,
+    type: 3}
+  m_PrefabInstance: {fileID: 1259473213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1262721355
 GameObject:
   m_ObjectHideFlags: 0
@@ -23912,7 +23926,6 @@ MonoBehaviour:
   _porte: {fileID: 13298962}
   _prisonnier: {fileID: 1776916295}
   _skillsManager: {fileID: 309363329}
-  _successMessage: {fileID: 1000965081}
 --- !u!65 &1600428739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23983,7 +23996,6 @@ MonoBehaviour:
   _porte: {fileID: 13298962}
   _prisonnier: {fileID: 1776916295}
   _skillsManager: {fileID: 309363329}
-  _successMessage: {fileID: 1000965081}
 --- !u!65 &1603932487
 BoxCollider:
   m_ObjectHideFlags: 0

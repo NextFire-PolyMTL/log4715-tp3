@@ -13,7 +13,7 @@ public class Toggle_fin_haut : MonoBehaviour
     void Awake()
     {
         particle=Boule_Energie.GetComponent<ParticleSystem>();
-        particle.startColor = Color.red;
+        particle.startColor = Color.magenta;
         coll_fin_haut = false;
     }
     void OnTriggerEnter(Collider collider)
@@ -29,7 +29,7 @@ public class Toggle_fin_haut : MonoBehaviour
     {
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            particle.startColor = Color.red;
+            particle.startColor = Color.magenta;
             coll_fin_haut = false;
         }
     }
