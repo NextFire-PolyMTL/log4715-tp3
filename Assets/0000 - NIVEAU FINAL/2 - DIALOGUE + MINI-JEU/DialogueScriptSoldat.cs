@@ -247,7 +247,10 @@ public class DialogueScriptSoldat : MonoBehaviour
     {
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            _VisualCue.SetActive(true);
+            if (_VisualCue!=null){
+                _VisualCue.SetActive(true);
+            }
+            
             begin_dialogue = true;
         }
     }
@@ -256,7 +259,10 @@ public class DialogueScriptSoldat : MonoBehaviour
     {
         if (collider.gameObject == _PlayerControler.gameObject)
         {
-            _VisualCue.SetActive(false);
+            if (_VisualCue!=null){
+                _VisualCue.SetActive(false);
+            }
+            
             begin_dialogue = false;
         }
     }

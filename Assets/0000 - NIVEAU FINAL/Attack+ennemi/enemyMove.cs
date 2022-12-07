@@ -104,19 +104,19 @@ public class enemyMove : MonoBehaviour
 
     void OnCollisonEnter(Collision coll)
     {
-        Debug.Log("tag:");
-        Debug.Log(coll.gameObject.tag);
+        //Debug.Log("tag:");
+        //Debug.Log(coll.gameObject.tag);
         if (coll.gameObject.tag == "weapon")
         {
-            Debug.Log("aïe");
+           // Debug.Log("aïe");
         }
     }
     void OnTriggerEnter(Collider vision)
     {
-        Debug.Log(vision.gameObject.tag);
+       // Debug.Log(vision.gameObject.tag);
         if (vision.gameObject.tag == "Hero")
         {
-            Debug.Log("alert");
+           // Debug.Log("alert");
             _Anim.SetBool("Alert", true);
         }
 
@@ -146,8 +146,8 @@ public class enemyMove : MonoBehaviour
             {
                 _Anim.SetBool("Shot", true);
                 _Anim.CrossFade("Shoot_SingleShot_AR 0", 0.1f);
-                Debug.Log("a");
-                Debug.Log(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0"));
+                //Debug.Log("a");
+                //Debug.Log(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0"));
                 //if(_Anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot_SingleShot_AR 0")){
                 GameObject fire = GameObject.Instantiate(projectile, firePoint.position, firePoint.rotation) as GameObject;
                 fire.tag = "projectile";

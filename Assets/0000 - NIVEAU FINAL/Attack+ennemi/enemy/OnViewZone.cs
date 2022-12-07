@@ -21,16 +21,16 @@ public class OnViewZone : MonoBehaviour
         
     }
     void OnTriggerEnter(Collider vision){
-        //Debug.Log(vision.gameObject.name=="MaleFree1");
+        //// dhsvuhvf(vision.gameObject.name=="MaleFree1");
         if(vision.gameObject.tag=="Hero"){
-            Debug.Log("alert");
+            // dhsvuhvf("alert");
             _Anim.SetBool("Alert", true);
         }
         
     }
     void OnTriggerExit(Collider vision){
         if(vision.gameObject.tag=="Hero"){
-            Debug.Log("ouf");
+            // dhsvuhvf("ouf");
             _Anim.SetBool("Alert", false);
         }
         
