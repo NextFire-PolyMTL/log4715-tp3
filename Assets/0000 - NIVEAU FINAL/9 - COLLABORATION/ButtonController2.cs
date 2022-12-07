@@ -25,7 +25,7 @@ public class ButtonController2 : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Check if the collision is on top of the button
-        if (collision.contacts[0].normal.y < 0)
+        if (collision.contacts[0].normal.y < 0 || collision.contacts[0].normal.z!=0)
         {
             active=!active;
             _ToggledObject.SetActive(active);
