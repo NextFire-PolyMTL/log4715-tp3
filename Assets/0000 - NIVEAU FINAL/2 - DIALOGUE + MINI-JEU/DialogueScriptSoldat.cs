@@ -57,6 +57,7 @@ public class DialogueScriptSoldat : MonoBehaviour
     private bool affiche_d_h2=false;
     private bool affiche_d_h4=false;
     private bool begin_dialogue = false;
+    private bool dernier_bool=false;
     public static bool start_opening = false;
     private bool mort=false;
     private bool affiche_d_h22=false;
@@ -204,7 +205,7 @@ public class DialogueScriptSoldat : MonoBehaviour
             text_soldat_p.SetActive(false);
             image_dialogue_soldat.SetActive(false);
             
-            bool pasAssez = Shared.GetComponent<SkillsManager>().EnleverXP(700);
+            bool pasAssez = Shared.GetComponent<SkillsManager>().EnleverXP(1000);
             if (pasAssez==false){
                 text_soldat_p.SetActive(true);
                 image_dialogue_soldat.SetActive(true);
@@ -213,16 +214,23 @@ public class DialogueScriptSoldat : MonoBehaviour
                 
             }
             else{
-                lance_mort=false;
-                lance_tourne=true;
-                Destroy(_VisualCue);
-                viewzone.SetActive(false);
-                targetzone.SetActive(false);
-                Niveau_PlayerControler.DialogueStop = false; 
+                text_soldat_v.SetActive(true);
+                image_dialogue_soldat.SetActive(true);
+                dernier_bool=true; 
             }
             //StartCoroutine(StopTime());
             //CloseScene();
-        } else if (affiche_d_h4 && Input.GetKeyDown(KeyCode.Y)){
+        } else if (dernier_bool==true && Input.GetKeyDown(KeyCode.Space)){
+            text_soldat_v.SetActive(false);
+            image_dialogue_soldat.SetActive(false);
+            lance_mort=false;
+            lance_tourne=true;
+            Destroy(_VisualCue);
+            viewzone.SetActive(false);
+            targetzone.SetActive(false);
+            Niveau_PlayerControler.DialogueStop = false;
+        } 
+        else if (affiche_d_h4 && Input.GetKeyDown(KeyCode.Y)){
             source.PlayOneShot(clip_dialogue);
             Niveau_PlayerControler.DialogueStop = true; 
             
