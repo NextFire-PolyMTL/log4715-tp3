@@ -17,7 +17,7 @@ public class weaponDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_skillsManager.unlockedSkills[(int)Skill.CAC]);
+        //Debug.Log(_skillsManager.unlockedSkills[(int)Skill.CAC]);
         gotuer=_skillsManager.unlockedSkills[(int)Skill.CAC];
        // Debug.Log("coucou");
     }

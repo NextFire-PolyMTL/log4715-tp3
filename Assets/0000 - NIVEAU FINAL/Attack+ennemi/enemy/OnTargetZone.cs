@@ -21,10 +21,10 @@ public class OnTargetZone : MonoBehaviour
         
     }
     void OnTriggerEnter(Collider vision){
-        //Debug.Log(vision.gameObject.name=="MaleFree1");
+        //// dhsvuhvf(vision.gameObject.name=="MaleFree1");
         targetOnView=true;
         if(vision.gameObject.tag=="Hero"){
-            Debug.Log("fire");
+            //// dhsvuhvf("fire");
             _Anim.SetBool("Target", true); 
             _Anim.CrossFade("Idle_Shoot_Ar",0.1f);
             enemy_move.fire_on_target=true;
