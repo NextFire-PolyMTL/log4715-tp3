@@ -7,6 +7,10 @@ public class Toggle_fin_bas : MonoBehaviour
     [SerializeField] private Niveau_PlayerControler _PlayerControler;
     public static bool coll_fin_bas = false;
     // Start is called before the first frame update
+    void Awake()
+    {
+        coll_fin_bas = false;
+    }
     void OnTriggerEnter(Collider collider)
     {   
         if (collider.gameObject == _PlayerControler.gameObject)

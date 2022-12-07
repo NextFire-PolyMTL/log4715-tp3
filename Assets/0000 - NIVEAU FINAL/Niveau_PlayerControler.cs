@@ -271,7 +271,8 @@ public class Niveau_PlayerControler : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider coll)
-    {
+    {   
+        if (coll.gameObject.tag == "projectile") _sante.Degats(_sante.Degats_Projectiles);
         if (coll.gameObject.tag == "frag")
         {
             SkillsManager.XP += 100;
