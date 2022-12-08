@@ -25882,6 +25882,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ToggledObject: {fileID: 1209165798}
+  _source: {fileID: 1263768729}
+  ClipButton: {fileID: 8300000, guid: f7ddb99c026e79d408394a4d84d28729, type: 3}
 --- !u!1 &1972646585
 GameObject:
   m_ObjectHideFlags: 0
@@ -28061,6 +28063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ToggledObject: {fileID: 1948506858}
+  _source: {fileID: 1263768729}
+  ClipButton: {fileID: 8300000, guid: f7ddb99c026e79d408394a4d84d28729, type: 3}
 --- !u!1 &2110121144
 GameObject:
   m_ObjectHideFlags: 0

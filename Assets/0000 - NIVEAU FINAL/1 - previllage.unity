@@ -14728,6 +14728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ToggledObject: {fileID: 1849139626}
+  _source: {fileID: 889359321}
+  ClipButton: {fileID: 8300000, guid: f7ddb99c026e79d408394a4d84d28729, type: 3}
 --- !u!1 &777062339
 GameObject:
   m_ObjectHideFlags: 0

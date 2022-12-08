@@ -11767,6 +11767,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ToggledObject: {fileID: 1805795756}
   _ToggledObject2: {fileID: 671631836}
+  _source: {fileID: 586462141}
+  ClipButton: {fileID: 8300000, guid: 4c9871aab96099b4f8e25706f178ac1d, type: 3}
 --- !u!23 &1028339257
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18298,6 +18300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ToggledObject: {fileID: 2035270285}
   _ToggledObject2: {fileID: 314364687}
+  _source: {fileID: 586462141}
+  ClipButton: {fileID: 8300000, guid: f7ddb99c026e79d408394a4d84d28729, type: 3}
 --- !u!1 &1642150029
 GameObject:
   m_ObjectHideFlags: 0

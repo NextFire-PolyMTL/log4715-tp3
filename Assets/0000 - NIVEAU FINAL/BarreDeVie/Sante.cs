@@ -152,7 +152,7 @@ public class Sante : MonoBehaviour
 
     public void Degats(int degats)
     {   
-        if (PV_actuels > 0)
+        if (PV_actuels > 0 && degats > 0)
         {
             _source.PlayOneShot(clip_degat);
         }
