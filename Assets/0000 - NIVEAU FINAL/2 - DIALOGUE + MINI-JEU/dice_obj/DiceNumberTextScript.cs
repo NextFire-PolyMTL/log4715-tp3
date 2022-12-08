@@ -41,7 +41,7 @@ public class DiceNumberTextScript : MonoBehaviour
                 result_anim = false;
                 if (DiceScript.score_player > DiceScript.score_opponent) { // Le joueur a gagné
                     Win_launch.win_animation = true;
-                    Money_increase.value = Money_increase.value + 550;
+                    Money_increase.value = Money_increase.value + 650;
                     Money_increase.update_money = true;
                 }
                 else if (DiceScript.score_player < DiceScript.score_opponent) { // Le joueur a perdu

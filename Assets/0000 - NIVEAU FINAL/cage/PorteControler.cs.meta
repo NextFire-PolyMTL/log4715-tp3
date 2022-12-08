@@ -3,7 +3,15 @@ guid: 9e24975632b18e74b996d2bbdc544571
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _porte: {instanceID: 0}
+  - _prisonnier: {instanceID: 0}
+  - _skillsManager: {instanceID: 0}
+  - feu_d_artif: {instanceID: 0}
+  - _source: {instanceID: 0}
+  - ClipPorte: {fileID: 8300000, guid: 26bec28b418da0d4db42da67ca0024e4, type: 3}
+  - ClipArtifice: {fileID: 8300000, guid: 282f1dae5884b554787e2b6ab35ff057, type: 3}
+  - Victoire: {fileID: 8300000, guid: 8e7aea54adfef8b42a758fcf70d9bfb1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

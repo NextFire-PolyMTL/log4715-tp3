@@ -45,17 +45,17 @@ public class Money_increase : MonoBehaviour
                 #endif
                 text1.text = previous_value.ToString();
                 SkillsManager.XP = previous_value;
-                yield return new WaitForSeconds(0.01F);
+                yield return new WaitForSeconds(0.03F);
             } 
         }
         else // On a gagné de l'argent
         {
-            for (int i = previous_value; i < value; i++)
+            for (int i = previous_value; i < value; i = i + 10)
             {   
-                previous_value = previous_value + 1;
+                previous_value = previous_value + 10;
                 text1.text = previous_value.ToString();
                 SkillsManager.XP = previous_value;
-                yield return new WaitForSeconds(0.001F);
+                yield return new WaitForSeconds(0.03F);
             } 
         } 
     }
