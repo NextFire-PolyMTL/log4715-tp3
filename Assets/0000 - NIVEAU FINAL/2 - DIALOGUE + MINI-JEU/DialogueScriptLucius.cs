@@ -31,10 +31,16 @@ public class DialogueScriptLucius : MonoBehaviour
     private bool begin_dialogue = false;
     public static bool start_opening = false;
 
+    public static bool affiche_exit_door = false;
+
     // Start is called before the first frame update
     void Start()
     {
         _VisualCue.SetActive(false);
+        if (affiche_exit_door)
+        {
+            exit_door.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +57,7 @@ public class DialogueScriptLucius : MonoBehaviour
             text_lucius1.SetActive(true);
             text_lucius2.SetActive(false);
             exit_door.SetActive(true);
+            affiche_exit_door = true;
         }
 
         else if (affiche_d1 && Input.GetKeyDown(KeyCode.Space)) // Phase 2 dialogue : le joueur répond
