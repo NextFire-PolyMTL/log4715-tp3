@@ -56,30 +56,6 @@ public class DialogueSpace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (affiche_text1)
-        {   
-            image_dialogue_heros.SetActive(true);
-            text_heros.SetActive(true);
-            text_heros2.SetActive(false);
-        }
-        else if (affiche_text2)
-        {   
-            image_dialogue_heros.SetActive(true);
-            text_heros.SetActive(false);
-            text_heros2.SetActive(true);
-        }
-        else
-        {   
-            image_dialogue_heros.SetActive(false);
-            text_heros.SetActive(false);
-            text_heros2.SetActive(false);
-        }
-
-    }
-
-    void FixedUpdate()
-    {   
         if (begin_dialogue) 
         {   
             begin_dialogue = false;
@@ -104,6 +80,26 @@ public class DialogueSpace : MonoBehaviour
             Cam_anim.speed = 0;
             StartCoroutine(Waitfinal());
         }
+
+        if (affiche_text1)
+        {   
+            image_dialogue_heros.SetActive(true);
+            text_heros.SetActive(true);
+            text_heros2.SetActive(false);
+        }
+        else if (affiche_text2)
+        {   
+            image_dialogue_heros.SetActive(true);
+            text_heros.SetActive(false);
+            text_heros2.SetActive(true);
+        }
+        else
+        {   
+            image_dialogue_heros.SetActive(false);
+            text_heros.SetActive(false);
+            text_heros2.SetActive(false);
+        }
+
     }
 
     IEnumerator WaitforStart()
@@ -118,7 +114,7 @@ public class DialogueSpace : MonoBehaviour
     }
     IEnumerator WaitforDialogue()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         ok = true;
     }
 
