@@ -24,10 +24,6 @@ public class SkillsManager : MonoBehaviour
 {
     public static int XP = 0;
     public static bool[] unlockedSkills = new bool[Enum.GetNames(typeof(Skill)).Length];
-
-    public static bool skill1 = false;
-    public static bool skill2 = false;
-    public static bool skill3 = false;
     [SerializeField] private Text _txt;
 
     [SerializeField] private TMP_Text _txt2;
