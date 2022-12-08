@@ -241,7 +241,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill1
         m_Mode: 1
@@ -9471,7 +9471,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill2
         m_Mode: 1
@@ -17940,7 +17940,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1322086242}
         m_TargetAssemblyTypeName: Bouton, Assembly-CSharp
         m_MethodName: DebloqueSkill3
         m_Mode: 1
