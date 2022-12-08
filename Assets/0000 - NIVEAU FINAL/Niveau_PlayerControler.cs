@@ -195,7 +195,8 @@ public class Niveau_PlayerControler : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             if (Grounded)
-            {
+            {   
+                _source.PlayOneShot(_movementManager.ClipSaut);
                 _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, 0);
                 _rb.AddForce(new Vector3(0, _movementManager.JumpForce, 0), ForceMode.Impulse);
                 Grounded = false;
@@ -204,7 +205,8 @@ public class Niveau_PlayerControler : MonoBehaviour
                 _canDoubleJump = true;
             }
             else if (_canDoubleJump && _skillsManager.unlockedSkills[(int)Skill.DoubleSaut])
-            {
+            {   
+                _source.PlayOneShot(_movementManager.ClipSaut);
                 _rb.velocity = new Vector3(_rb.velocity.x, 0, 0);
                 _rb.AddForce(new Vector3(0, _movementManager.JumpForce, 0), ForceMode.Impulse);
                 _canDoubleJump = false;
@@ -276,6 +278,7 @@ public class Niveau_PlayerControler : MonoBehaviour
         if (coll.gameObject.tag == "projectile") _sante.Degats(_sante.Degats_Projectiles);
         if (coll.gameObject.tag == "frag")
         {   
+            _source.PlayOneShot(_movementManager.Clipfrag);
             Sante.xp_tableau = Sante.xp_tableau + 100;
             SkillsManager.XP += 100;
             coll.gameObject.SetActive(false);

@@ -117,7 +117,7 @@ namespace DigitalRuby.PyroParticles
                 {
                     int index = UnityEngine.Random.Range(0, EmissionSounds.Length);
                     AudioClip clip = EmissionSounds[index];
-                    audio.PlayOneShot(clip, scale);
+                    audio.PlayOneShot(clip, scale/3);
                 }
             }
         }
@@ -157,7 +157,7 @@ namespace DigitalRuby.PyroParticles
 
             int index = UnityEngine.Random.Range(0, ExplosionSounds.Length);
             AudioClip clip = ExplosionSounds[index];
-            s.PlayOneShot(clip, obj.transform.localScale.x);
+            s.PlayOneShot(clip, obj.transform.localScale.x/3);
         }
 
         private IEnumerator CleanupMeteor(float delay, GameObject obj)

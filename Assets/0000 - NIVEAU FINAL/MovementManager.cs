@@ -21,4 +21,5 @@ public class MovementManager : MonoBehaviour
     [Header("Visuels et sons")]
     public AudioClip ClipDash;
     public AudioClip ClipSaut;
+    public AudioClip Clipfrag;
 }

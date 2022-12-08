@@ -13,6 +13,12 @@ public class new_game : MonoBehaviour
     public TMP_Text Info;
     public GameObject Shuttle;
     public Camera Cam;
+
+    [SerializeField] private AudioSource _source;
+    
+    [SerializeField] AudioClip clip_debut;
+
+    [SerializeField] AudioClip clip_vaisseau;
     // Start is called before the first frame update
 
     Animator L_anim;
@@ -37,6 +43,7 @@ public class new_game : MonoBehaviour
             L_anim.SetBool("debut", true);
             S_anim.SetBool("debut", true);
             Destroy(Info);
+            _source.PlayOneShot(clip_debut);
             Shuttle_anim.SetBool("debut", true);
             Cam_anim.SetBool("debut", true);
             StartCoroutine(Waitfinal());
@@ -45,7 +52,9 @@ public class new_game : MonoBehaviour
     }
     IEnumerator Waitfinal()
     {
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(3.5f);
+        _source.PlayOneShot(clip_vaisseau);
+        yield return new WaitForSeconds(4.5f);
         SceneManager.LoadScene("2 - SPACE cinematic");
     }
 }

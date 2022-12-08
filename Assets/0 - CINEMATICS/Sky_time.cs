@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Sky_time : MonoBehaviour
-{   
+{      
     public static bool change_scene = false;
     // Start is called before the first frame update
     void Start()

@@ -39,6 +39,12 @@ public class animation_ground : MonoBehaviour
     AudioClip clip_dialogue;
 
     [SerializeField]
+    AudioClip clip_cri;
+
+    [SerializeField]
+    AudioClip suspense;
+
+    [SerializeField]
     GameObject text_fin;
 
     Animator _AnimCam;
@@ -71,7 +77,38 @@ public class animation_ground : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {    
+        if (begin_dialogue) 
+        {   
+            begin_dialogue = false;
+            affiche_text1 = true;
+            affiche_text2 = false;
+        }
+
+        if (affiche_text1 && Input.GetKeyDown (KeyCode.Space)) 
+        {   
+            _Anim.Play("Buff");
+            _AnimCam.Play("ground_camera_animator");
+            source.PlayOneShot(clip_dialogue);
+            source.PlayOneShot(clip_cri);
+            affiche_text1 = false;
+            affiche_text2 = true;
+            StartCoroutine(WaitforDialogue());
+        }
+
+        if (ok && affiche_text2 && Input.GetKeyDown (KeyCode.Space))
+        {   
+            source.PlayOneShot(clip_dialogue);
+            affiche_text1 = false;
+            affiche_text2 = false;
+            _AnimCam.Play("rotate_ground");
+            _AnimFin.Play("fondu_final");
+            _AnimPlane.Play("plane");
+            _AnimTxt.Play("chapitre1");
+            StartCoroutine(Shadow_appear());
+            StartCoroutine(Decrease_light());
+        }
+
         if (affiche_text1)
         {   
             image_dialogue_heros.SetActive(true);
@@ -92,40 +129,6 @@ public class animation_ground : MonoBehaviour
         }
 
     }
-    void FixedUpdate()
-    {   
-        if (begin_dialogue) 
-        {   
-            begin_dialogue = false;
-            affiche_text1 = true;
-            affiche_text2 = false;
-        }
-
-        if (affiche_text1 && Input.GetKeyDown (KeyCode.Space)) 
-        {   
-            _Anim.Play("Buff");
-            _AnimCam.Play("ground_camera_animator");
-            source.PlayOneShot(clip_dialogue);
-            affiche_text1 = false;
-            affiche_text2 = true;
-            StartCoroutine(WaitforDialogue());
-        }
-
-        if (ok && affiche_text2 && Input.GetKeyDown (KeyCode.Space))
-        {   
-            source.PlayOneShot(clip_dialogue);
-            affiche_text1 = false;
-            affiche_text2 = false;
-            _AnimCam.Play("rotate_ground");
-            _AnimFin.Play("fondu_final");
-            _AnimPlane.Play("plane");
-            _AnimTxt.Play("chapitre1");
-            StartCoroutine(Shadow_appear());
-            StartCoroutine(Decrease_light());
-        }
-
-    }
-
     IEnumerator Decrease_light()
     {   for(int i = 1; i < 11; i++)
         {   
@@ -135,6 +138,7 @@ public class animation_ground : MonoBehaviour
     }
     IEnumerator Shadow_appear()
     {   
+        source.PlayOneShot(suspense);
         yield return new WaitForSeconds(1);
         Shadow_soldier.SetActive(true);
         Hero.SetActive(false);

@@ -909,11 +909,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 969924bb248a9814f937e46b5b94653a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5107,6 +5107,8 @@ MonoBehaviour:
   text_heros2: {fileID: 273093911}
   source: {fileID: 317634684}
   clip_dialogue: {fileID: 8300000, guid: 4c9871aab96099b4f8e25706f178ac1d, type: 3}
+  clip_cri: {fileID: 8300000, guid: aaabffda6ef9cd94dbdcf0bbdbb1c2f4, type: 3}
+  suspense: {fileID: 8300000, guid: 3c59cc8e28de36b48a3b8efd3a995853, type: 3}
   text_fin: {fileID: 1310783046}
 --- !u!1001 &2110337432
 PrefabInstance:

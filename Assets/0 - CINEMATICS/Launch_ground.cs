@@ -11,6 +11,13 @@ public class Launch_ground : MonoBehaviour
     Camera Cam;
 
     public GameObject Shuttle;
+
+    [SerializeField] private AudioSource _source;
+    
+    [SerializeField] AudioClip clip_explosion;
+    [SerializeField] AudioClip clip_feu;
+
+    [SerializeField] AudioClip clip_vaisseau;
     Animator Shuttle_anim;
 
     Animator Cam_anim;
@@ -34,8 +41,14 @@ public class Launch_ground : MonoBehaviour
     }
 
     IEnumerator Change_scene()
-    {
-        yield return new WaitForSeconds(12f);
+    {   
+        _source.PlayOneShot(clip_vaisseau);
+        yield return new WaitForSeconds(2f);
+        //_source.Stop(clip_vaisseau);
+        _source.PlayOneShot(clip_explosion);
+        yield return new WaitForSeconds(2f);
+        _source.PlayOneShot(clip_feu);
+        yield return new WaitForSeconds(9f);
         SceneManager.LoadScene("5 - AWAKE-cinematic");
     }
 }

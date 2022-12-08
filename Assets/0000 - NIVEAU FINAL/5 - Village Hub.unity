@@ -3417,6 +3417,7 @@ MonoBehaviour:
   DashingCooldown: 1
   ClipDash: {fileID: 8300000, guid: 98851fa3ef760f94ebc2d664d6b7a2ef, type: 3}
   ClipSaut: {fileID: 8300000, guid: e2cbea86c57e30144873c1679a637f9f, type: 3}
+  Clipfrag: {fileID: 8300000, guid: ff64a5a60a79ea9468f1369ea223aa7b, type: 3}
 --- !u!114 &309363333
 MonoBehaviour:
   m_ObjectHideFlags: 0
