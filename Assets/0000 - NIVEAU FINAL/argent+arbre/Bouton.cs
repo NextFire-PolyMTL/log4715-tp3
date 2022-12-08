@@ -104,7 +104,7 @@ public class Bouton : MonoBehaviour
     {
 
         //bool c1=NombreS.GetComponent<nombre_xp>().EnleverXP(130);
-        bool c1 = _skillManager.EnleverXP(130);
+        bool c1 = _skillManager.EnleverXP(100);
         //print(c1);
         if (c1 == true)
         {
@@ -136,7 +136,7 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill2()
     {
         //bool c2=NombreS.GetComponent<nombre_xp>().EnleverXP(200);
-        bool c2 = _skillManager.EnleverXP(200);
+        bool c2 = _skillManager.EnleverXP(250);
         if (c2 == true)
         {
             bouton_list[1].interactable = false;
@@ -167,7 +167,7 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill3()
     {
         //bool c3=NombreS.GetComponent<nombre_xp>().EnleverXP(200);
-        bool c3 = _skillManager.EnleverXP(200);
+        bool c3 = _skillManager.EnleverXP(250);
         if (c3 == true)
         {
             bouton_list[2].interactable = false;
@@ -199,7 +199,7 @@ public class Bouton : MonoBehaviour
     public void DebloqueSkill4()
     {
         //bool c4=NombreS.GetComponent<nombre_xp>().EnleverXP(250);
-        bool c4 = _skillManager.EnleverXP(250);
+        bool c4 = _skillManager.EnleverXP(300);
         if (c4 == true)
         {
             bouton_list[3].interactable = false;
