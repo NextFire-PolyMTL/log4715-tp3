@@ -3098,6 +3098,9 @@ MonoBehaviour:
   Fade: {fileID: 1192608133}
   hero: {fileID: 967482685}
   shadow: {fileID: 967482685}
+  _source: {fileID: 498825422}
+  clip_game_over: {fileID: 8300000, guid: cb4d7e85ef0a9d74b84437ded49559b3, type: 3}
+  clip_degat: {fileID: 8300000, guid: d6c876cea75f124438c29c463f0187b9, type: 3}
   Degats_Projectiles: 1
   Degats_Lave: 1
   _isOnLava: 0

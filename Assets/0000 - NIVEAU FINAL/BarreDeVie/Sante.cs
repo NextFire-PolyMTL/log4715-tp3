@@ -15,6 +15,12 @@ public class Sante : MonoBehaviour
     [SerializeField] private GameObject Fade;
     [SerializeField] private GameObject hero;
     [SerializeField] private GameObject shadow;
+
+    [SerializeField] private AudioSource _source;
+    
+    [SerializeField] AudioClip clip_game_over;
+
+    [SerializeField] AudioClip clip_degat;
     public int Degats_Projectiles = 1;
     public int Degats_Lave = 1;
 
@@ -145,13 +151,18 @@ public class Sante : MonoBehaviour
     }
 
     public void Degats(int degats)
-    {
+    {   
+        if (PV_actuels > 0)
+        {
+            _source.PlayOneShot(clip_degat);
+        }
         PV_actuels = Mathf.Max(PV_actuels - degats, 0);
         bar_de_vie.setLife(PV_actuels);
     }
 
     IEnumerator Death()
     {   
+        _source.PlayOneShot(clip_game_over);
         _animHero.Play("MeleeWarrior@Death01_A");
         _animShadow.Play("MeleeWarrior@Death01_A");
         gameover.SetActive(true);
