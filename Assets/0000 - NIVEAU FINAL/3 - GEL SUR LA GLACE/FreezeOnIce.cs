@@ -10,6 +10,8 @@ public class FreezeOnIce : MonoBehaviour
     [SerializeField] private GameObject _IceBlock;
     [SerializeField] private float _DelayUntilFreeze = 1.0f;
     [SerializeField] private int _IceBreakNbActions = 5;
+    [SerializeField] private AudioSource _source;
+    public AudioClip Clipglace;
     private bool _onIce = false;
     private float _lastMove = 0;
     private int _nbActions = 0;
@@ -35,7 +37,11 @@ public class FreezeOnIce : MonoBehaviour
         if (input || !_pc.Grounded) _lastMove = Time.time;
 
         if (_onIce && (Input.GetAxis("Horizontal") == 0) && ((Time.time - _lastMove) > _DelayUntilFreeze)) Freeze(true);
-        else if (_pc.Frozen && (_nbActions > _IceBreakNbActions)) Freeze(false);
+        else if (_pc.Frozen && (_nbActions > _IceBreakNbActions)) 
+        {
+            _source.PlayOneShot(Clipglace);
+            Freeze(false);
+        }
     }
 
     void OnCollisionEnter(Collision coll)

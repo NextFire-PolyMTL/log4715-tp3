@@ -124,7 +124,8 @@ public class Niveau_PlayerControler : MonoBehaviour
             }
 
             if (Input.GetButtonDown("Attack") && _skillsManager.unlockedSkills[(int)Skill.CAC])
-            {
+            {   
+                _source.PlayOneShot(_movementManager.Clipatk);
                 _weapon.damage_mode = true;
                 _anim.CrossFade("Attack", 0.1f);
             }

@@ -22,4 +22,5 @@ public class MovementManager : MonoBehaviour
     public AudioClip ClipDash;
     public AudioClip ClipSaut;
     public AudioClip Clipfrag;
+    public AudioClip Clipatk;
 }
