@@ -39,7 +39,7 @@ public class DialogueScriptLucius : MonoBehaviour
         _VisualCue.SetActive(false);
         if (affiche_exit_door)
         {
-            exit_door.SetActive(true);
+            exit_door?.SetActive(true);
         }
     }
 
@@ -56,7 +56,7 @@ public class DialogueScriptLucius : MonoBehaviour
             image_dialogue_lucius.SetActive(true);
             text_lucius1.SetActive(true);
             text_lucius2.SetActive(false);
-            exit_door.SetActive(true);
+            exit_door?.SetActive(true);
             affiche_exit_door = true;
         }
 
@@ -77,7 +77,7 @@ public class DialogueScriptLucius : MonoBehaviour
             image_dialogue_lucius.SetActive(false);
             text_lucius1.SetActive(false);
             text_lucius2.SetActive(false);
-            StartCoroutine(StopTime());       
+            StartCoroutine(StopTime());
 
         }
 
