@@ -100,7 +100,7 @@ public class DialogueSpace : MonoBehaviour
             source.PlayOneShot(clip_dialogue);
             affiche_text1 = false;
             affiche_text2 = false;
-            Shuttle_anim.speed = 1;
+            Shuttle_anim.SetBool("fin", true);
             Cam_anim.speed = 0;
             StartCoroutine(Waitfinal());
         }
@@ -113,7 +113,6 @@ public class DialogueSpace : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         Cam_anim.SetBool("debut", true);
         yield return new WaitForSeconds(0.85f);
-        Shuttle_anim.speed = 0;
         Cam_anim.SetBool("debut", true);
         begin_dialogue = true;
     }
