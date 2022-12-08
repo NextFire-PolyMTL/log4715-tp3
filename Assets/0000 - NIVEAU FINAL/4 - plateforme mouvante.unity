@@ -2821,6 +2821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de7de5892173ed4ba8499b0ddb03fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _source: {fileID: 1961662088}
+  ClipFin: {fileID: 8300000, guid: 66d440739507bdb4d955023dd813a559, type: 3}
   Fade: {fileID: 1482536723}
 --- !u!114 &166946537
 MonoBehaviour:

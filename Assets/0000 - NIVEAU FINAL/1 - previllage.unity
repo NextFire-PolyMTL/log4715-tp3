@@ -21052,6 +21052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e94c228fcf7d047a3de95c1a7b8156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _source: {fileID: 889359321}
+  ClipFin: {fileID: 8300000, guid: 66d440739507bdb4d955023dd813a559, type: 3}
   Fade: {fileID: 2141063624}
 --- !u!1 &1135867893
 GameObject:

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class T_5_6 : MonoBehaviour
-{
+{ 
     [SerializeField] private GameObject Fade;
     private Animator _animFade;
 

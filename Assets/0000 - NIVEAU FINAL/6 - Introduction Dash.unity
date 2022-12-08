@@ -17647,6 +17647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a5b79841d741c47915d468953ec8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _source: {fileID: 516259347}
+  ClipFin: {fileID: 8300000, guid: 66d440739507bdb4d955023dd813a559, type: 3}
   Fade: {fileID: 1340012639}
 --- !u!1001 &1134275286
 PrefabInstance:

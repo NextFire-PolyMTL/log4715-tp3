@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class T_3_4 : MonoBehaviour
 {
+    [SerializeField] private AudioSource _source;
+    public AudioClip ClipFin;
     [SerializeField] private GameObject Fade;
     private Animator _animFade;
 
@@ -27,6 +29,7 @@ public class T_3_4 : MonoBehaviour
 
     IEnumerator Move_to_next()
     {
+        _source.PlayOneShot(ClipFin);
         _animFade.Play("In");
         yield return new WaitForSeconds(1.1f);
         SceneManager.LoadScene("4 - plateforme mouvante");
