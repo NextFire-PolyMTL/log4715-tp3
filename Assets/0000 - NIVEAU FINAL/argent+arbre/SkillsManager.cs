@@ -30,7 +30,7 @@ public class SkillsManager : MonoBehaviour
     [SerializeField] private Text _txt;
 
     [SerializeField] private TMP_Text _txt2;
-    public bool set_arbre;
+    public bool set_arbre = false;
 
 
     // Start is called before the first frame update
@@ -39,6 +39,15 @@ public class SkillsManager : MonoBehaviour
         unlockedSkills[0] = skill1;
         unlockedSkills[1] = skill2;
         unlockedSkills[2] = skill3;
+        StartCoroutine(UpdateSetArbre());
+    }
+
+    // FIXME:
+    IEnumerator UpdateSetArbre()
+    {
+        yield return new WaitForSeconds(1f);
+        Scene scene = SceneManager.GetActiveScene();
+        set_arbre = !(scene.name == "1 - previllage" || scene.name == "2 - portes boutons" || scene.name == "3 - Boue et Piege" || scene.name == "4 - plateforme mouvante");
     }
 
     // Update is called once per frame
@@ -46,13 +55,6 @@ public class SkillsManager : MonoBehaviour
     {
         _txt.text = XP.ToString();
         _txt2.text = XP.ToString();
-        Scene scene = SceneManager.GetActiveScene(); 
-        //Debug.Log("scene");
-        if (scene.name=="1 - previllage" || scene.name=="2 - portes boutons" || scene.name=="3 - Boue et Piege" || scene.name=="4 - plateforme mouvante"){
-            set_arbre=false;
-        } else{
-            set_arbre=true;
-        }
     }
 
 
