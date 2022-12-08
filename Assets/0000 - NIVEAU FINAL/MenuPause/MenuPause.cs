@@ -9,6 +9,8 @@ public class MenuPause : MonoBehaviour
     private bool set=false;
     private GameObject separation;
     private GameObject checkVillage;
+    [SerializeField] private AudioSource _source;
+    public AudioClip ClipFin;
     // Start is called before the first frame update
     
     void Start(){
@@ -19,6 +21,7 @@ public class MenuPause : MonoBehaviour
     void Update(){
         if (Input.GetKeyDown(KeyCode.Escape)){
             set=!set;
+            _source.PlayOneShot(ClipFin);
             Menu.SetActive(set);
             //Debug.Log(checkVillage.activeSelf);
             if (checkVillage.activeSelf==true){
@@ -36,6 +39,7 @@ public class MenuPause : MonoBehaviour
     }
     
     public void Resume(){
+        _source.PlayOneShot(ClipFin);
         Menu.SetActive(false);
         Time.timeScale=1f;
     } 

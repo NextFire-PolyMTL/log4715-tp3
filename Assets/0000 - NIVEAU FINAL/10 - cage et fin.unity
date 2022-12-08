@@ -4733,6 +4733,8 @@ MonoBehaviour:
   _HUD: {fileID: 307668193}
   _Arbre: {fileID: 1322086241}
   SkillsManagerh: {fileID: 309363329}
+  _source: {fileID: 1242980889}
+  ClipFin: {fileID: 8300000, guid: 4c9871aab96099b4f8e25706f178ac1d, type: 3}
 --- !u!114 &309363332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11109,6 +11111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 1643884885}
+  _source: {fileID: 1242980889}
+  ClipFin: {fileID: 8300000, guid: 4c9871aab96099b4f8e25706f178ac1d, type: 3}
 --- !u!1 &763632573
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class Arbre : MonoBehaviour
     [SerializeField] private GameObject _Arbre;
     private bool allume = false;
     [SerializeField] SkillsManager SkillsManagerh;
+    [SerializeField] private AudioSource _source;
+    public AudioClip ClipFin;
     private bool set_arbre;
 
     // Start is called before the first frame update
@@ -24,6 +26,7 @@ public class Arbre : MonoBehaviour
         set_arbre=SkillsManagerh.set_arbre;
         if (Input.GetKeyDown(KeyCode.M) && set_arbre==true)
         {
+            _source.PlayOneShot(ClipFin);
             allume = !allume;
             _Arbre.SetActive(allume);
             _HUD.SetActive(!allume);
