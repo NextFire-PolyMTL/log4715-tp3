@@ -154,7 +154,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.Team-Olimar.Lost-Shadows
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -272,7 +273,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 903ac94c8b304b6478bb5d31c3e2afa7, type: 3}
+      m_Icon: {fileID: 2800000, guid: e4cdc246076518f4e8d2818b5bf0dded, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
