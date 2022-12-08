@@ -44,14 +44,15 @@ public class new_game : MonoBehaviour
             S_anim.SetBool("debut", true);
             Destroy(Info);
             _source.PlayOneShot(clip_debut);
-            Shuttle_anim.SetBool("debut", true);
-            Cam_anim.SetBool("debut", true);
             StartCoroutine(Waitfinal());
         }
         
     }
     IEnumerator Waitfinal()
-    {
+    { 
+        yield return new WaitForSeconds(2.5f);
+        Shuttle_anim.SetBool("debut", true);
+        Cam_anim.SetBool("debut", true);
         yield return new WaitForSeconds(3.5f);
         _source.PlayOneShot(clip_vaisseau);
         yield return new WaitForSeconds(4.5f);
