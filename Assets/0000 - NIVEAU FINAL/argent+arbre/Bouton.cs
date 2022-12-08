@@ -12,7 +12,7 @@ public class Bouton : MonoBehaviour
     private int[] couts_list;
     [SerializeField] bool niv2=false;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update    
     void Awake()
     {
         bouton_list = new List<Button>();
@@ -105,7 +105,6 @@ public class Bouton : MonoBehaviour
 
         //bool c1=NombreS.GetComponent<nombre_xp>().EnleverXP(130);
         bool c1 = _skillManager.EnleverXP(100);
-        //print(c1);
         if (c1 == true)
         {
             bouton_list[1].interactable = true;
