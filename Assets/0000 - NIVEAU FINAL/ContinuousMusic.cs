@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class ContinuousMusic : MonoBehaviour
 {
     private AudioSource _audioSource;
-    [SerializeField] private bool _dontDestroyOnLoad = true;
+    [SerializeField] private bool _destroyOnSceneChange = false;
+    private string _currentSceneName = null;
 
     private void Awake()
     {
@@ -24,7 +26,24 @@ public class ContinuousMusic : MonoBehaviour
             }
         }
 
-        if (_dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
+        _currentSceneName = SceneManager.GetActiveScene().name;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneChange;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneChange;
+    }
+
+    private void OnSceneChange(Scene scene, LoadSceneMode mode)
+    {
+        if (_destroyOnSceneChange && scene.name != _currentSceneName) Destroy(gameObject);
     }
 
     // Start is called before the first frame update
