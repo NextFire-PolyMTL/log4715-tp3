@@ -23,6 +23,9 @@ public class DialogueScriptLucius : MonoBehaviour
     [SerializeField]
     AudioClip clip_dialogue;
 
+    [SerializeField]
+    GameObject exit_door;
+
     private bool affiche_d1 = false;
     private bool affiche_d2 = false;
     private bool begin_dialogue = false;
@@ -47,6 +50,7 @@ public class DialogueScriptLucius : MonoBehaviour
             image_dialogue_lucius.SetActive(true);
             text_lucius1.SetActive(true);
             text_lucius2.SetActive(false);
+            exit_door.SetActive(true);
         }
 
         else if (affiche_d1 && Input.GetKeyDown(KeyCode.Space)) // Phase 2 dialogue : le joueur répond
