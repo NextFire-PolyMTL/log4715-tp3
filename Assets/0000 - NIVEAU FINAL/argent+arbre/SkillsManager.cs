@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 public enum Skill
 {
     DoubleSaut,
@@ -22,11 +23,7 @@ public enum Skill
 public class SkillsManager : MonoBehaviour
 {
     public static int XP = 0;
-    public bool[] unlockedSkills = new bool[Enum.GetNames(typeof(Skill)).Length];
-
-    public static bool skill1 = false;
-    public static bool skill2 = false;
-    public static bool skill3 = false;
+    public static bool[] unlockedSkills = new bool[Enum.GetNames(typeof(Skill)).Length];
     [SerializeField] private Text _txt;
 
     [SerializeField] private TMP_Text _txt2;
@@ -36,9 +33,6 @@ public class SkillsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unlockedSkills[0] = skill1;
-        unlockedSkills[1] = skill2;
-        unlockedSkills[2] = skill3;
         StartCoroutine(UpdateSetArbre());
     }
 
