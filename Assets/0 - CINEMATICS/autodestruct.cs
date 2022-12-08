@@ -5,8 +5,10 @@ using UnityEngine;
 public class autodestruct : MonoBehaviour
 {   
     public ParticleSystem particle;
+
     public float début;
     public float duree;
+    
     // Start is called before the first frame update
     void Start()
     {   
@@ -17,7 +19,7 @@ public class autodestruct : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator Autodestruct()
