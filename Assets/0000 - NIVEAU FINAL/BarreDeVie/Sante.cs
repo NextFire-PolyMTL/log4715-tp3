@@ -17,7 +17,7 @@ public class Sante : MonoBehaviour
     [SerializeField] private GameObject shadow;
 
     [SerializeField] private AudioSource _source;
-    
+
     [SerializeField] AudioClip clip_game_over;
 
     [SerializeField] AudioClip clip_degat;
@@ -49,7 +49,8 @@ public class Sante : MonoBehaviour
 
     private bool first_death = true;
 
-    public static int xp_tableau = 0;
+    private int _xpBackup;
+    private bool[] _skillsBackup;
 
 
 
@@ -70,8 +71,10 @@ public class Sante : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
-        xp_tableau = 0;
+    {
+        _xpBackup = SkillsManager.XP;
+        _skillsBackup = (bool[])SkillsManager.unlockedSkills.Clone();
+
         Niveau_PlayerControler.DialogueStop = true;
         if (!Niveau_PlayerControler.StartOpening)
         {
@@ -151,7 +154,7 @@ public class Sante : MonoBehaviour
     }
 
     public void Degats(int degats)
-    {   
+    {
         if (PV_actuels > 0 && degats > 0)
         {
             _source.PlayOneShot(clip_degat);
@@ -161,7 +164,7 @@ public class Sante : MonoBehaviour
     }
 
     IEnumerator Death()
-    {   
+    {
         _source.PlayOneShot(clip_game_over);
         _animHero.Play("MeleeWarrior@Death01_A");
         _animShadow.Play("MeleeWarrior@Death01_A");
@@ -177,15 +180,15 @@ public class Sante : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         PV_actuels = PV_max;
         Niveau_PlayerControler.s_gameOver = false;
-        SkillsManager.XP = SkillsManager.XP - xp_tableau;
-        xp_tableau = 0;
+        SkillsManager.XP = _xpBackup;
+        SkillsManager.unlockedSkills = _skillsBackup;
         Scene scene = SceneManager.GetActiveScene();
         if (niveau_diff == false)
         {
             SceneManager.LoadScene(scene.name);
         }
         else
-        {   
+        {
             if (scene.name == "10 - cage et fin")
             {
                 SceneManager.LoadScene("5 - Village Hub");
@@ -194,10 +197,10 @@ public class Sante : MonoBehaviour
             {
                 SceneManager.LoadScene("1 - previllage");
             }
-            else 
+            else
             {
                 SceneManager.LoadScene("5 - Village Hub");
             }
         }
     }
-}   
+}
