@@ -146,7 +146,8 @@ public class DialogueScript2 : MonoBehaviour
     private void LoadGame()
     {
         DiceScript.start_opening = true;
-        SceneManager.LoadScene("Dice-game2");
+        DiceScript.niveau_final = true;
+        SceneManager.LoadScene("Dice-game");
     }
 
     IEnumerator StopTime()

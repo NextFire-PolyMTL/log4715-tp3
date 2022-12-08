@@ -13,6 +13,8 @@ public class DiceScript : MonoBehaviour
     public static int score_opponent = 0;
     public static bool start_opening = false;
 
+    public static bool niveau_final = false;
+
     [SerializeField]
     RectTransform fader;
 
@@ -104,6 +106,14 @@ public class DiceScript : MonoBehaviour
     {
         DialogueScript.start_opening = true;
         Niveau_PlayerControler.StartOpening = true;
-        SceneManager.LoadScene("5 - Village Hub");
+        if (!niveau_final)
+        {
+            SceneManager.LoadScene("5 - Village Hub");
+        }
+        else
+        {   
+            niveau_final = false;
+            SceneManager.LoadScene("11 - Village 2");
+        }
     }
 }
